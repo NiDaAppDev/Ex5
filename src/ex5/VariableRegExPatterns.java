@@ -2,7 +2,7 @@ package ex5;
 
 public class VariableRegExPatterns {
 
-    /*Keyword Constantsa*/
+    /*Keyword Constants*/
 
     //General
     private static final String OR = "|";
