@@ -20,13 +20,19 @@ public class VariableRegExPatterns {
     private static final String STRING_TYPE = "String";
     private static final String BOOLEAN_TYPE = "boolean";
     private static final String CHAR_TYPE = "char";
-    private static final String VARIABLE_TYPE =
+    /**
+     * Regex that validates a variable's type.
+     */
+    public static final String VARIABLE_TYPE =
             INT_TYPE + OR +
                     DOUBLE_TYPE + OR +
                     STRING_TYPE + OR +
                     BOOLEAN_TYPE + OR +
                     CHAR_TYPE;
-    private static final String VAR_NAME = "\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b";
+    /**
+     * Regex that validates a variable's name.
+     */
+    public static final String VAR_NAME = "\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b";
     private static final String INT_VALUE = PLUS_MINUS + "?\\d+";
     private static final String DOUBLE_VALUE = PLUS_MINUS + "?(?:\\d+\\.?\\d*|\\.\\d+)";
     private static final String STRING_VALUE = "\"[^\"]*\"";
@@ -36,7 +42,8 @@ public class VariableRegExPatterns {
             INT_VALUE + OR +
                     DOUBLE_VALUE + OR +
                     STRING_VALUE + OR +
-                    BOOLEAN_VALUE;
+                    BOOLEAN_VALUE + OR +
+                    CHAR_VALUE;
 
     //Operators
     private static final String EQ = SPACE_CHAR + "*=" + SPACE_CHAR + "*";
