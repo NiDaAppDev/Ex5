@@ -2,7 +2,7 @@ package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.reg_ex_patterns.GeneralRegEx.*;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
 public class MethodRegexPatterns {
