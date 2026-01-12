@@ -86,7 +86,7 @@ public class VariableRegExPatterns {
      * variables declaration.
      * Should be checked on capturing group 3 of VARIABLE_DECLARATION_LINE's result with find()
      * method.
-     * TODO: if more than 1 variables is defined in the same definition, make sure the initializations
+     * TODO: if more than 1 variable is defined in the same definition, make sure the initializations
      * TODO: are separated by a comma.
      */
     public static final Pattern singleVariableInitPattern =
