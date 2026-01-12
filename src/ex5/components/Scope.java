@@ -9,8 +9,7 @@ public class Scope {
 
     private HashMap<String, Variable> variables;
     private HashMap<String, Method> methods;
-    private IfStatement[] ifStatements;
-    private WhileLoop[]  whileLoops;
+    private IfWhileBlocks[] ifStatements;
 
     public Scope(Scope parent, String codeBlock) {
         this.parent = parent;
