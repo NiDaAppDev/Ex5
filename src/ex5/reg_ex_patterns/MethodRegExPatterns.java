@@ -25,10 +25,18 @@ public class MethodRegExPatterns {
     private static final String PARAMETERS =
             "(?:" + SINGLE_PARAMETER + "(?:," + SINGLE_PARAMETER + ")*" + ")?";
 
+    private static final String METHOD_CALL =
+            SPACE_CHAR + "+" + METHOD_NAME +
+                    SPACE_CHAR + "*\\(" +
+                    "(.+)\\)";
+
     public static final Pattern  METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
 
     public static final Pattern  PARAMETERS_PATTERN =
             Pattern.compile(PARAMETERS);
+
+    public static final Pattern METHOD_CALL_PATTERN =
+            Pattern.compile(METHOD_CALL);
 
 }

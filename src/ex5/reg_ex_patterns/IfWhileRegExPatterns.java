@@ -21,5 +21,5 @@ public class IfWhileRegExPatterns {
     /**
      * This pattern should be used to validate the title of an if statement.
      */
-    public static final Pattern ifPattern = Pattern.compile(IF_DECLARATION_LINE);
+    public static final Pattern IF_WHILE_PATTERN = Pattern.compile(IF_DECLARATION_LINE);
 }

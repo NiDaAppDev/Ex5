@@ -85,7 +85,7 @@ public class VariableRegExPatterns {
     /**
      * This pattern should be used to validate the whole structure of a variable's declaration line.
      */
-    public static final Pattern variableDeclarationPattern =
+    public static final Pattern VARIABLE_DECLARATION_PATTERN =
             Pattern.compile(VARIABLE_DECLARATION_LINE);
 
     /**
@@ -96,13 +96,13 @@ public class VariableRegExPatterns {
      * TODO: if more than 1 variable is defined in the same definition, make sure the initializations
      * TODO: are separated by a comma.
      */
-    public static final Pattern singleVariableInitPattern =
+    public static final Pattern SINGLE_VARIABLE_INIT_PATTERN =
             Pattern.compile(SINGLE_VARIABLE_INIT_VALID_CONTENT);
 
     /**
      * This pattern should be used to validate an assignment of a value to a variable.
      */
-    public static final Pattern assignValueToVariablePattern =
+    public static final Pattern ASSIGN_VALUE_TO_VARIABLE_PATTERN =
             Pattern.compile(VALID_VARIABLE_ASSIGNMENT);
 
 }

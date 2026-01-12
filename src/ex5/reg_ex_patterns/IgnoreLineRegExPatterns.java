@@ -19,7 +19,7 @@ public class IgnoreLineRegExPatterns {
     /**
      * This pattern should be used to classify a comment\spaces line that's ignorable.
      */
-    public static final Pattern ignoreLinePattern = Pattern.compile(IGNORABLE_LINE);
+    public static final Pattern IGNORE_LINE_PATTERN = Pattern.compile(IGNORABLE_LINE);
 
 
     //TODO: figure out if we should actually refer to illegal comment openers, or they just won't
