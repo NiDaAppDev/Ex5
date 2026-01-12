@@ -1,9 +1,9 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.RegExPatterns.GeneralRegEx.OR;
-import static ex5.RegExPatterns.GeneralRegEx.SPACES_INITIAL;
+import static ex5.reg_ex_patterns.GeneralRegEx.OR;
+import static ex5.reg_ex_patterns.GeneralRegEx.SPACES_INITIAL;
 
 public class IgnoreLineRegEx {
 

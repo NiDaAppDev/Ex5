@@ -1,4 +1,4 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 public class GeneralRegEx {
 

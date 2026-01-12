@@ -1,8 +1,8 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.RegExPatterns.GeneralRegEx.*;
+import static ex5.reg_ex_patterns.GeneralRegEx.*;
 
 public class VariableRegExPatterns {
 
