@@ -18,4 +18,9 @@ public class IfRegEx {
      * Relevant to the statement above:
      * Group 1 captures the condition of the if statement.
      */
+
+    /**
+     * This pattern should be used to validate the title of an if statement.
+     */
+    public static final Pattern ifPattern = Pattern.compile(IF_DECLARATION_LINE);
 }
