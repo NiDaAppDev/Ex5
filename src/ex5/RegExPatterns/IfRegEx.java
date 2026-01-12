@@ -8,7 +8,7 @@ import static ex5.RegExPatterns.GeneralRegEx.*;
 public class IfRegEx {
     private static final String IF_DECLARATION_LINE =
             SPACES_INITIAL //Line can start with spaces
-                    + "if" + SPACE_CHAR + "*" //'if' keyword may have spaces after it
+                    + "(?:if|while)" + SPACE_CHAR + "*" //'if' keyword may have spaces after it
                     + "\\(" //Opening parenthesis
                     + "([^)]+)\\)" //Condition
                     + SPACE_CHAR + "*" //There could be spaces between the condition and parentheses
