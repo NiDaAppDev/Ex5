@@ -1,4 +1,4 @@
-package ex5;
+package ex5.RegExPatterns;
 
 public class VariableRegExPatterns {
 
