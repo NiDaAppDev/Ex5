@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
-public class MethodRegexPatterns {
+public class MethodRegExPatterns {
 
     private static final String METHOD_NAME = "\\b[a-zA-Z]\\w*\\b";
     private static final String METHOD_PARAMETER =
