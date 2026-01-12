@@ -1,21 +1,12 @@
 package ex5.RegExPatterns;
 
+import static ex5.RegExPatterns.GeneralRegEx.*;
+
 public class VariableRegExPatterns {
 
     /*Keyword Constants*/
 
     //General
-    private static final String OR = "|";
-    private static final String SPACE_CHAR = "\\s";
-    private static final String SPACES_INITIAL = "^" + SPACE_CHAR + "*";
-    private static final String SPACES_ENDING = SPACE_CHAR + "*$";
-    private static final String EMPTY_LINE = SPACES_INITIAL + "$";
-    private static final String COMMENT_LINE = "^\\/\\/";
-    private static final String ILLEGAL_ONE_LINE_COMMENT = ".+\\/\\/";
-    private static final String ILLEGAL_MULTILINE_COMMENT_OPENER = "[^\\/]?\\/\\*";
-    private static final String BLOCK_OPENER = "{";
-    private static final String BLOCK_CLOSER = "}";
-    private static final String CODE_LINE_END = ";";
     private static final String PLUS_MINUS = "[+\\-]";
     private static final String OPERATOR = "[+\\-\\*\\/]";
     private static final String ARRAY_BRACKET = "[\\[\\]]";
@@ -46,9 +37,8 @@ public class VariableRegExPatterns {
                     BOOLEAN_VALUE;
 
     //Operators
-    private static final String EQ = "\\s*=\\s*";
-    private static final String COMMA = "\\s*,\\s*";
-    private static final String ENDING_SEMICOLON = "\\s*;\\s*$";
+    private static final String EQ = SPACE_CHAR + "*=" + SPACE_CHAR + "*";
+    private static final String COMMA = SPACE_CHAR + "*," + SPACE_CHAR + "*";
 
     //Variables Initialization
     private static final String VARIABLE_DECLARATION_LINE =
