@@ -1,9 +1,9 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.RegExPatterns.GeneralRegEx.SPACE_CHAR;
-import static ex5.RegExPatterns.VariableRegExPatterns.*;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACE_CHAR;
+import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
 public class MethodRegexPatterns {
 

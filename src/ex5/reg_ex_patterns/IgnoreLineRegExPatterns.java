@@ -1,11 +1,11 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.RegExPatterns.GeneralRegEx.OR;
-import static ex5.RegExPatterns.GeneralRegEx.SPACES_INITIAL;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.OR;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACES_INITIAL;
 
-public class IgnoreLineRegEx {
+public class IgnoreLineRegExPatterns {
 
     private static final String EMPTY_LINE = SPACES_INITIAL + "$";
     private static final String COMMENT_LINE = "^//";

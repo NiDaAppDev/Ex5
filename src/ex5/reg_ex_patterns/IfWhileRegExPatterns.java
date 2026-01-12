@@ -1,10 +1,10 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.RegExPatterns.GeneralRegEx.*;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 
-public class IfWhileRegEx {
+public class IfWhileRegExPatterns {
     private static final String IF_DECLARATION_LINE =
             SPACES_INITIAL //Line can start with spaces
                     + "(?:if|while)" + SPACE_CHAR + "*" //'if' keyword may have spaces after it

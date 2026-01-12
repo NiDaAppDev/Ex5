@@ -1,6 +1,6 @@
-package ex5.RegExPatterns;
+package ex5.reg_ex_patterns;
 
-public class GeneralRegEx {
+public class GeneralRegExPatterns {
 
     public static final String OR = "|";
     public static final String SPACE_CHAR = "\\s";
