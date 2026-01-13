@@ -28,9 +28,9 @@ public class MethodRegExPatterns {
             "(?:" + SINGLE_PARAMETER + "(?:," + SINGLE_PARAMETER + ")*" + ")?";
 
     private static final String METHOD_CALL =
-            SPACE_CHAR + "+(" + METHOD_NAME + ")" +
+            SPACE_CHAR + "*(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
-                    "([^)]*)\\)" + SPACE_CHAR;
+                    "([^)]*)\\)" + SPACE_CHAR + "*;";
 
     public static final Pattern  METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
