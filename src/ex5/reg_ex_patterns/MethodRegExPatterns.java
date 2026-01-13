@@ -2,6 +2,7 @@ package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACES_INITIAL;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACE_CHAR;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
@@ -11,12 +12,13 @@ public class MethodRegExPatterns {
     private static final String METHOD_PARAMETER =
             VARIABLE_TYPE + SPACE_CHAR + "+" + VAR_NAME;
     private static final String METHOD_SIGNATURE =
-            "void" + SPACE_CHAR + "+" + METHOD_NAME +
+            SPACES_INITIAL + "void" + SPACE_CHAR + "+(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
-                    "([^)]+)\\)" + SPACE_CHAR + "*\\{";
+                    "([^)]*)\\)" + SPACE_CHAR + "*\\{";
     /*
     * Relevant to the statement above:
-    * Group 1 captures the methods' parameters
+    * Group 1 captures the methods' name
+    * Group 2 captures the method's parameters
     * */
 
     private static final String SINGLE_PARAMETER =
@@ -26,9 +28,9 @@ public class MethodRegExPatterns {
             "(?:" + SINGLE_PARAMETER + "(?:," + SINGLE_PARAMETER + ")*" + ")?";
 
     private static final String METHOD_CALL =
-            SPACE_CHAR + "+" + METHOD_NAME +
+            SPACE_CHAR + "+(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
-                    "(.+)\\)";
+                    "([^)]*)\\)" + SPACE_CHAR;
 
     public static final Pattern  METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
