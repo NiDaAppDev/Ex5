@@ -7,5 +7,5 @@ public class GeneralRegExPatterns {
     public static final String SPACES_INITIAL = "^" + SPACE_CHAR + "*";
     public static final String SPACES_ENDING = SPACE_CHAR + "*$";
     public static final String ENDING_SEMICOLON = SPACE_CHAR + "*;" + SPACE_CHAR + "*$";
-    public static final String CODE_BLOCK_CLOSING_BRACKET = SPACE_CHAR + "}" + SPACES_ENDING;
+    public static final String CODE_BLOCK_CLOSING_BRACKET = SPACES_INITIAL + "}" + SPACES_ENDING;
 }
