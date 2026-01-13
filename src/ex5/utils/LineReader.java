@@ -12,7 +12,7 @@ public class LineReader {
 
     private static String[] current_groups = new String[0];
 
-    enum LINE_TYPE {
+    public enum LINE_TYPE {
         IGNORE,
         VAR_DEF,
         VAR_ASSIGN,

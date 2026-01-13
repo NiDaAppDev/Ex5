@@ -1,5 +1,7 @@
 package ex5.reg_ex_patterns;
 
+import java.util.regex.Pattern;
+
 public class GeneralRegExPatterns {
 
     public static final String OR = "|";
@@ -8,4 +10,6 @@ public class GeneralRegExPatterns {
     public static final String SPACES_ENDING = SPACE_CHAR + "*$";
     public static final String ENDING_SEMICOLON = SPACE_CHAR + "*;" + SPACE_CHAR + "*$";
     public static final String CODE_BLOCK_CLOSING_BRACKET = SPACES_INITIAL + "}" + SPACES_ENDING;
+
+    public static final Pattern CLOSING_BRACKET_PATTERN = Pattern.compile(CODE_BLOCK_CLOSING_BRACKET);
 }
