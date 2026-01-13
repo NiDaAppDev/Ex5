@@ -82,6 +82,9 @@ public class VariableRegExPatterns {
     private static final String SINGLE_VARIABLE_INIT_VALID_CONTENT =
             VALID_VARIABLE_NAME_ONLY + OR + VALID_VARIABLE_ASSIGNMENT;
 
+    private static final String VARIABLES_DECLARATION_CONTENT =
+            "(" + SINGLE_VARIABLE_INIT_VALID_CONTENT + "),+" + ENDING_SEMICOLON;
+
     /**
      * This pattern should be used to validate the whole structure of a variable's declaration line.
      */

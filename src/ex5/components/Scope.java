@@ -2,6 +2,8 @@ package ex5.components;
 
 import java.util.HashMap;
 
+import static ex5.utils.LineReader.*;
+
 public class Scope {
 
     private final Scope parent;
@@ -11,9 +13,11 @@ public class Scope {
     private HashMap<String, Method> methods;
     private IfWhileBlocks[] ifStatements;
 
-    public Scope(Scope parent, String codeBlock) {
+    public Scope(Scope parent,
+                 String[] codeBlock,
+                 HashMap<String, Variable> variables) {
         this.parent = parent;
-        this.codeBlock = codeBlock.lines().toArray(String[]::new);
+        this.codeBlock = codeBlock;
         variables = new HashMap<>();
     }
 
@@ -26,6 +30,15 @@ public class Scope {
     }
 
     private void parseCodeBlock() {
+
+        for(String codeLine : codeBlock) {
+
+            LINE_TYPE currentLineType = classifyLine(codeLine);
+            switch (currentLineType) {
+//                case VAR_DEF ->
+            }
+
+        }
 
     }
 
