@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class Scope {
 
     private final Scope parent;
-    private final String codeBlock;
+    private final String[] codeBlock;
 
     private HashMap<String, Variable> variables;
     private HashMap<String, Method> methods;
@@ -13,7 +13,7 @@ public class Scope {
 
     public Scope(Scope parent, String codeBlock) {
         this.parent = parent;
-        this.codeBlock = codeBlock;
+        this.codeBlock = codeBlock.lines().toArray(String[]::new);
         variables = new HashMap<>();
     }
 
@@ -23,6 +23,10 @@ public class Scope {
 
     public void assignVariable(String variableName, Variable variable) {
         variables.put(variableName, variable);
+    }
+
+    private void parseCodeBlock() {
+
     }
 
 }

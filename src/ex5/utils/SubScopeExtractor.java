@@ -8,12 +8,11 @@ import static ex5.reg_ex_patterns.GeneralRegExPatterns.CLOSING_BRACKET_PATTERN;
 
 public class SubScopeExtractor {
 
-    public static int getBlockEndIndex(String codeBlock) {
+    public static int getBlockEndIndex(String[] codeLines) {
         int remainingBracketsToCloseCount = 0;
-        if(codeBlock.isEmpty()) {
+        if(codeLines.length == 0) {
             return 0;
         }
-        String[] codeLines = codeBlock.lines().toArray(String[]::new);
         int innerIndex = 0;
         for (String codeLine : codeLines) {
             LINE_TYPE currentLineType = LineReader.classifyLine(codeLine);
