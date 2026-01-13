@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.CLOSING_BRACKET_PATTERN;
 
-public class CodeBlockExtractor {
+public class SubScopeExtractor {
 
     public static int getBlockEndIndex(String codeBlock) {
         int remainingBracketsToCloseCount = 0;
