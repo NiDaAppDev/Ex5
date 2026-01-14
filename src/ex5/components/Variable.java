@@ -12,16 +12,19 @@ public class Variable {
         this.isInitialized = isInitialized;
     }
 
-    public Variable(String type, boolean isInitialized) {
-        this.type = type;
-        this.isFinal = false;
-        this.isInitialized = isInitialized;
+    public boolean isFinal() {
+        return isFinal;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public boolean isInitialized() {
+        return isInitialized;
     }
 
     public void initialize() {
-        if(!isInitialized) {
-            this.isInitialized = true;
-        }
+        isInitialized = true;
     }
-
 }

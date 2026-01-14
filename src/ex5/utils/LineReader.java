@@ -16,7 +16,7 @@ public class LineReader {
         IGNORE,
         VAR_DEF,
         VAR_ASSIGN,
-        IF_OR_WHILE,
+        IF_WHILE,
         METHOD_DEF,
         METHOD_CALL,
         ILLEGAL
@@ -54,7 +54,7 @@ public class LineReader {
             for(int i = 0; i <= ifWhileM.groupCount(); i++){
                 current_groups[i] = ifWhileM.group(i);
             }
-            return LINE_TYPE.IF_OR_WHILE;
+            return LINE_TYPE.IF_WHILE;
         }
         Matcher methodSignatureM = METHOD_PATTERN.matcher(line);
         if (methodSignatureM.matches()) {

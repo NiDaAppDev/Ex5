@@ -64,26 +64,45 @@ public class VariableRegExPatterns {
      */
 
     //Uninitialized variable, name only
-    private static final String VALID_VARIABLE_NAME_ONLY = "^" + VAR_NAME + "$";
-    /*
-     * Relevant to the statement above:
-     * Group 1 captures the variable's name
-     */
+    private static final String VALID_VARIABLE_NAME_ONLY = VAR_NAME;
 
     //Initialized variable
     private static final String VALID_VARIABLE_ASSIGNMENT =
-            "^" + VAR_NAME + EQ + VARIABLE_VALUE + "$";
+            VAR_NAME + EQ + VARIABLE_VALUE;
+
+    private static final String VALID_VARIABLE_ASSIGNMENT_LINE =
+            SPACES_INITIAL + "(" + VALID_VARIABLE_ASSIGNMENT + ")" +
+                    SPACE_CHAR + "*" + ENDING_SEMICOLON + SPACES_ENDING;
     /*
-     * Relevant to the statement above:
-     * Group 1 captures the variable's name
-     * Group 2 captures the variable's value
+     * Group 1 captures an assignment of a value to a variable
      */
 
     private static final String SINGLE_VARIABLE_INIT_VALID_CONTENT =
             VALID_VARIABLE_NAME_ONLY + OR + VALID_VARIABLE_ASSIGNMENT;
 
     private static final String VARIABLES_DECLARATION_CONTENT =
-            "(" + SINGLE_VARIABLE_INIT_VALID_CONTENT + "),+" + ENDING_SEMICOLON;
+            "(" + SINGLE_VARIABLE_INIT_VALID_CONTENT + ")(?:" +
+                    SPACE_CHAR + "*," + SPACE_CHAR + "*(" +
+                    SINGLE_VARIABLE_INIT_VALID_CONTENT + "))*";
+    /*
+     * Relevant to the statement above:
+     * Captured groups hold the variables' in the declaration
+     */
+
+    private static final String VALUE_TYPE =
+            "(" + INT_VALUE + ")" + OR +
+                    "(" + DOUBLE_VALUE + ")" + OR +
+                    "(" + STRING_VALUE + ")" + OR +
+                    "(" + BOOLEAN_VALUE + ")" + OR +
+                    "(" + CHAR_VALUE + ")";
+    /*
+     * Relevant to the statement above:
+     * Group 1 captures if the value is an integer
+     * Group 2 captures if the value is a double
+     * Group 3 captures if the value is a string
+     * Group 4 captures if the value is a boolean
+     * Group 5 captures if the value is a char
+     */
 
     /**
      * This pattern should be used to validate the whole structure of a variable's declaration line.
@@ -91,21 +110,24 @@ public class VariableRegExPatterns {
     public static final Pattern VARIABLE_DECLARATION_PATTERN =
             Pattern.compile(VARIABLE_DECLARATION_LINE);
 
+
     /**
-     * This pattern should be used to validate each and every variable initialization in a line of
-     * variables declaration.
-     * Should be checked on capturing group 3 of VARIABLE_DECLARATION_LINE's result with find()
-     * method.
-     * TODO: if more than 1 variable is defined in the same definition, make sure the initializations
-     * TODO: are separated by a comma.
+     * This pattern should be used to validate and extract the declared variables in a variable
+     * declaration line.
      */
-    public static final Pattern SINGLE_VARIABLE_INIT_PATTERN =
-            Pattern.compile(SINGLE_VARIABLE_INIT_VALID_CONTENT);
+    public static final Pattern VARIABLE_DEFENITION_CONTENT_PATTERN =
+            Pattern.compile(VARIABLES_DECLARATION_CONTENT);
+
+    /**
+     * This pattern should be used to parse the type of a value.
+     */
+    public static final Pattern VALUE_TYPE_PATTERN =
+            Pattern.compile(VALUE_TYPE);
 
     /**
      * This pattern should be used to validate an assignment of a value to a variable.
      */
     public static final Pattern ASSIGN_VALUE_TO_VARIABLE_PATTERN =
-            Pattern.compile(VALID_VARIABLE_ASSIGNMENT);
+            Pattern.compile(VALID_VARIABLE_ASSIGNMENT_LINE);
 
 }

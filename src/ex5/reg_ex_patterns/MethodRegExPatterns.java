@@ -16,10 +16,10 @@ public class MethodRegExPatterns {
                     SPACE_CHAR + "*\\(" +
                     "([^)]*)\\)" + SPACE_CHAR + "*\\{";
     /*
-    * Relevant to the statement above:
-    * Group 1 captures the methods' name
-    * Group 2 captures the method's parameters
-    * */
+     * Relevant to the statement above:
+     * Group 1 captures the methods' name
+     * Group 2 captures the method's parameters
+     * */
 
     private static final String SINGLE_PARAMETER =
             "(" + VARIABLE_TYPE + ")" + SPACE_CHAR +
@@ -31,11 +31,15 @@ public class MethodRegExPatterns {
             SPACE_CHAR + "*(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
                     "([^)]*)\\)" + SPACE_CHAR + "*;";
+    /*
+     * Group 1 captures the method's name
+     * Group 2 captures the parameters block
+     */
 
-    public static final Pattern  METHOD_PATTERN =
+    public static final Pattern METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
 
-    public static final Pattern  PARAMETERS_PATTERN =
+    public static final Pattern PARAMETERS_PATTERN =
             Pattern.compile(PARAMETERS);
 
     public static final Pattern METHOD_CALL_PATTERN =

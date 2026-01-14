@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 
 public class IfWhileRegExPatterns {
-    private static final String IF_DECLARATION_LINE =
+    private static final String IF_WHILE_DECLARATION_LINE =
             SPACES_INITIAL //Line can start with spaces
                     + "(?:if|while)" + SPACE_CHAR + "*" //'if' keyword may have spaces after it
                     + "\\(" //Opening parenthesis
@@ -15,11 +15,11 @@ public class IfWhileRegExPatterns {
                     + SPACES_ENDING; //Line can end with spaces
     /*
      * Relevant to the statement above:
-     * Group 1 captures the condition of the if statement.
+     * Group 1 captures the condition of the if\while statement.
      */
 
     /**
      * This pattern should be used to validate the title of an if statement.
      */
-    public static final Pattern IF_WHILE_PATTERN = Pattern.compile(IF_DECLARATION_LINE);
+    public static final Pattern IF_WHILE_PATTERN = Pattern.compile(IF_WHILE_DECLARATION_LINE);
 }

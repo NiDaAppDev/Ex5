@@ -10,27 +10,22 @@ public class SubScopeExtractor {
 
     public static int getBlockEndIndex(String[] codeLines) {
         int remainingBracketsToCloseCount = 0;
-        if(codeLines.length == 0) {
-            return 0;
-        }
-        int innerIndex = 0;
-        for (String codeLine : codeLines) {
-            LINE_TYPE currentLineType = LineReader.classifyLine(codeLine);
+        for (int i = 0; i < codeLines.length; i++) {
+            LINE_TYPE currentLineType = LineReader.classifyLine(codeLines[i]);
             switch (currentLineType) {
-                case METHOD_DEF, IF_OR_WHILE -> remainingBracketsToCloseCount++;
+                case METHOD_DEF, IF_WHILE -> remainingBracketsToCloseCount++;
                 default -> {
-                    Matcher closingBracketM = CLOSING_BRACKET_PATTERN.matcher(codeLine);
+                    Matcher closingBracketM = CLOSING_BRACKET_PATTERN.matcher(codeLines[i]);
                     if (closingBracketM.matches()) {
                         if (remainingBracketsToCloseCount == 0) {
-                            return innerIndex;
+                            return i;
                         }
                         remainingBracketsToCloseCount--;
                     }
                 }
             }
-            innerIndex += codeLine.length();
         }
-        return 0;
+        return -1;
     }
 
 }
