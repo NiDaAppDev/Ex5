@@ -26,7 +26,7 @@ public class LineReader {
         current_groups = new String[0];
         Matcher ignoreM = IGNORE_LINE_PATTERN.matcher(line);
         if (ignoreM.matches()) {
-            current_groups = new String[ignoreM.groupCount()];
+            current_groups = new String[ignoreM.groupCount() + 1];
             for(int i = 0; i <= ignoreM.groupCount(); i++){
                 current_groups[i] = ignoreM.group(i);
             }
@@ -34,7 +34,7 @@ public class LineReader {
         }
         Matcher varDeclarationM = VARIABLE_DECLARATION_PATTERN.matcher(line);
         if (varDeclarationM.matches()) {
-            current_groups = new String[varDeclarationM.groupCount()];
+            current_groups = new String[varDeclarationM.groupCount() + 1];
             for(int i = 0; i <= varDeclarationM.groupCount(); i++){
                 current_groups[i] = varDeclarationM.group(i);
             }
@@ -42,7 +42,7 @@ public class LineReader {
         }
         Matcher varAssignmentM = ASSIGN_VALUE_TO_VARIABLE_PATTERN.matcher(line);
         if (varAssignmentM.matches()) {
-            current_groups = new String[varAssignmentM.groupCount()];
+            current_groups = new String[varAssignmentM.groupCount() + 1];
             for(int i = 0; i <= varAssignmentM.groupCount(); i++){
                 current_groups[i] = varAssignmentM.group(i);
             }
@@ -50,7 +50,7 @@ public class LineReader {
         }
         Matcher ifWhileM = IF_WHILE_PATTERN.matcher(line);
         if (ifWhileM.matches()) {
-            current_groups = new String[ifWhileM.groupCount()];
+            current_groups = new String[ifWhileM.groupCount() + 1];
             for(int i = 0; i <= ifWhileM.groupCount(); i++){
                 current_groups[i] = ifWhileM.group(i);
             }
@@ -58,7 +58,7 @@ public class LineReader {
         }
         Matcher methodSignatureM = METHOD_PATTERN.matcher(line);
         if (methodSignatureM.matches()) {
-            current_groups = new String[methodSignatureM.groupCount()];
+            current_groups = new String[methodSignatureM.groupCount() + 1];
             for(int i = 0; i <= methodSignatureM.groupCount(); i++){
                 current_groups[i] = methodSignatureM.group(i);
             }
@@ -66,7 +66,7 @@ public class LineReader {
         }
         Matcher methodCallM = METHOD_CALL_PATTERN.matcher(line);
         if (methodCallM.matches()) {
-            current_groups = new String[methodCallM.groupCount()];
+            current_groups = new String[methodCallM.groupCount() + 1];
             for(int i = 0; i <= methodCallM.groupCount(); i++){
                 current_groups[i] = methodCallM.group(i);
             }

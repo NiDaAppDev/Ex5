@@ -3,6 +3,7 @@ package ex5.reg_ex_patterns;
 import java.util.regex.Pattern;
 
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
+import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
 public class IfWhileRegExPatterns {
     private static final String IF_WHILE_DECLARATION_LINE =
@@ -18,8 +19,24 @@ public class IfWhileRegExPatterns {
      * Group 1 captures the condition of the if\while statement.
      */
 
+    private static final String SINGLE_VALID_CONDITION =
+            BOOLEAN_VALUE + OR +
+                    INT_VALUE + OR +
+                    DOUBLE_VALUE + OR +
+                    VAR_NAME;
+    private static final String VALID_CONDITION_BLOCK =
+            SPACE_CHAR + "*(" + SINGLE_VALID_CONDITION + ")" + SPACE_CHAR +
+                    "*(?:(?:\\|\\|" + OR + "&&)" + SPACE_CHAR +
+                    "*(" + SINGLE_VALID_CONDITION + ")" + SPACE_CHAR +"*)*";
+    /*
+     * Relevant to the statement above:
+     * Captured groups hold the conditions constructing the conditions block
+     */
+
     /**
      * This pattern should be used to validate the title of an if statement.
      */
     public static final Pattern IF_WHILE_PATTERN = Pattern.compile(IF_WHILE_DECLARATION_LINE);
+
+    public static final Pattern CONDITION_BLOCK_PATTERN = Pattern.compile(VALID_CONDITION_BLOCK);
 }

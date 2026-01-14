@@ -33,10 +33,19 @@ public class VariableRegExPatterns {
      * Regex that validates a variable's name.
      */
     public static final String VAR_NAME = "\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b";
-    private static final String INT_VALUE = PLUS_MINUS + "?\\d+";
-    private static final String DOUBLE_VALUE = PLUS_MINUS + "?(?:\\d+\\.?\\d*|\\.\\d+)";
+    /**
+     * Regex that validates an int value.
+     */
+    public static final String INT_VALUE = PLUS_MINUS + "?\\d+";
+    /**
+     * Regex that validates a double value.
+     */
+    public static final String DOUBLE_VALUE = PLUS_MINUS + "?(?:\\d+\\.?\\d*|\\.\\d+)";
     private static final String STRING_VALUE = "\"[^\"]*\"";
-    private static final String BOOLEAN_VALUE = "true" + OR + "false" + OR + DOUBLE_VALUE;
+    /**
+     * Regex that validates a boolean value.
+     */
+    public static final String BOOLEAN_VALUE = "true" + OR + "false" + OR + DOUBLE_VALUE;
     private static final String CHAR_VALUE = "'[^']'";
     private static final String VARIABLE_VALUE =
             INT_VALUE + OR +
@@ -129,5 +138,12 @@ public class VariableRegExPatterns {
      */
     public static final Pattern ASSIGN_VALUE_TO_VARIABLE_PATTERN =
             Pattern.compile(VALID_VARIABLE_ASSIGNMENT_LINE);
+
+    /**
+     * This pattern should be used to validate a call to a variable (usually
+     * as a boolean in a condition)
+     */
+    public static final Pattern VALID_VARIABLE_CALL =
+            Pattern.compile(VAR_NAME);
 
 }

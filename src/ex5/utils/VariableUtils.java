@@ -9,7 +9,7 @@ import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 public class VariableUtils {
 
     public static NameVariablePair[] extractDeclaredVariables(String[] data) {
-        boolean isFinal = data[1].contains("final");
+        boolean isFinal = data[1] != null;
         String type = data[2];
 
         Matcher varDeclarationsM = VARIABLE_DEFENITION_CONTENT_PATTERN.matcher(data[3]);

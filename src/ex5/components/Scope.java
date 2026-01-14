@@ -43,7 +43,6 @@ public class Scope {
     }
 
     private void parseCodeBlock() {
-
         for (int i = 0; i < codeBlock.length; i++) {
             LineReader.LINE_TYPE currentLineType = LineReader.classifyLine(codeBlock[i]);
             switch (currentLineType) {
@@ -77,7 +76,8 @@ public class Scope {
                     String[] subScopeCodeBlock = Arrays.copyOfRange(codeBlock,
                             i + 1,
                             blockClosingBracketIndex);
-                    IfWhile ifWhile = new IfWhile(LineReader.getCurrentGroups()[0], subScopeCodeBlock);
+
+                    IfWhile ifWhile = new IfWhile(LineReader.getCurrentGroups(), subScopeCodeBlock);
                 }
                 case METHOD_DEF -> {
 

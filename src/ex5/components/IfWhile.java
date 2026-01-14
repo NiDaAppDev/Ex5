@@ -4,14 +4,14 @@ public class IfWhile {
 
     Scope scope;
 
-    public IfWhile(String condition , String[] codeLines) {
-        if(!isConditionValid(condition)) {
+    public IfWhile(String[] conditionBlock , String[] codeLines) {
+        if(!isConditionBlockValid(conditionBlock)) {
             //TODO: throw an "illegal" exception.
         }
 
     }
 
-    private boolean isConditionValid(String condition) {
+    private boolean isConditionBlockValid(String[] conditionBlock) {
         //TODO: how do we validate a condition?
         return true;
     }
