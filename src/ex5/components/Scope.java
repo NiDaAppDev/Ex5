@@ -57,6 +57,11 @@ public class Scope {
         return variables;
     }
 
+    public HashMap<String, Method> getMethods() {
+        if(parent==null) return methods;
+        return parent.getMethods();
+    }
+
     public HashMap<String, Variable> getAllVisibleVariables() {
         if (parent == null) return variables;
         HashMap<String, Variable> allVariables = parent.getAllVisibleVariables();
@@ -102,9 +107,6 @@ public class Scope {
                     if(!methods.containsKey(LineReader.getCurrentGroups()[1])) {
                         //TODO: throw an "illegal" exception.
                     }
-//                    methods.
-//                            get(LineReader.getCurrentGroups()[0]).
-//                            call(LineReader.getCurrentGroups()[1]);
                 }
                 case ILLEGAL, default -> {//TODO: throw an "illegal" exception.}
                 }
