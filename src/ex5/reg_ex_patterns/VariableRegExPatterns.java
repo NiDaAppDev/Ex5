@@ -15,11 +15,26 @@ public class VariableRegExPatterns {
 
     //Variables Basics
     private static final String FINAL = "final";
-    private static final String INT_TYPE = "int";
-    private static final String DOUBLE_TYPE = "double";
-    private static final String STRING_TYPE = "String";
-    private static final String BOOLEAN_TYPE = "boolean";
-    private static final String CHAR_TYPE = "char";
+    /**
+     * Regex that recognizes an int type.
+     */
+    public static final String INT_TYPE = "int";
+    /**
+     * Regex that recognizes a double type.
+     */
+    public static final String DOUBLE_TYPE = "double";
+    /**
+     * Regex that recognizes a String type.
+     */
+    public static final String STRING_TYPE = "String";
+    /**
+     * Regex that recognizes a boolean type.
+     */
+    public static final String BOOLEAN_TYPE = "boolean";
+    /**
+     * Regex that recognizes a char type.
+     */
+    public static final String CHAR_TYPE = "char";
     /**
      * Regex that validates a variable's type.
      */

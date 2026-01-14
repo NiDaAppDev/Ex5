@@ -2,6 +2,7 @@ package ex5.utils;
 
 import ex5.utils.LineReader.LINE_TYPE;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.CLOSING_BRACKET_PATTERN;
@@ -26,6 +27,14 @@ public class SubScopeExtractor {
             }
         }
         return -1;
+    }
+
+    public static String[] getSubScopeCodeBlock(String[] codeBlock,
+                                                int startingIndex,
+                                                int endingIndex) {
+        return Arrays.copyOfRange(codeBlock,
+                startingIndex,
+                endingIndex);
     }
 
 }

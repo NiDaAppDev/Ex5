@@ -45,11 +45,11 @@ public class VariableUtils {
     private static boolean isAssignmentLegal(String type, String value) {
         Matcher valueTypeM = VALUE_TYPE_PATTERN.matcher(value);
         return valueTypeM.matches() &&
-                (!type.equals("int") || valueTypeM.group(1) != null) &&
-                (!type.equals("double") || valueTypeM.group(2) != null) &&
-                (!type.equals("string") || valueTypeM.group(3) != null) &&
-                (!type.equals("boolean") || valueTypeM.group(4) != null) &&
-                (!type.equals("char") || valueTypeM.group(5) != null);
+                (!type.equals(INT_TYPE) || valueTypeM.group(1) != null) &&
+                (!type.equals(DOUBLE_TYPE) || valueTypeM.group(2) != null) &&
+                (!type.equals(STRING_TYPE) || valueTypeM.group(3) != null) &&
+                (!type.equals(BOOLEAN_TYPE) || valueTypeM.group(4) != null) &&
+                (!type.equals(CHAR_TYPE) || valueTypeM.group(5) != null);
     }
 
 }

@@ -34,9 +34,17 @@ public class IfWhileRegExPatterns {
      */
 
     /**
-     * This pattern should be used to validate the title of an if statement.
+     * This pattern should be used to validate the title of an if\while statement.
      */
     public static final Pattern IF_WHILE_PATTERN = Pattern.compile(IF_WHILE_DECLARATION_LINE);
 
+    /**
+     * This pattern should be used to validate a single condition.
+     */
+    public static final Pattern SINGLE_CONDITION_PATTERN = Pattern.compile(SINGLE_VALID_CONDITION);
+
+    /**
+     * This pattern should be used to validate a condition block.
+     */
     public static final Pattern CONDITION_BLOCK_PATTERN = Pattern.compile(VALID_CONDITION_BLOCK);
 }
