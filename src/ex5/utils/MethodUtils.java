@@ -66,11 +66,11 @@ public class MethodUtils {
     private static String getConstantType(String arg) {
         Matcher matcher = VALUE_TYPE_PATTERN.matcher(arg);
         if (!matcher.matches()) return null;
-        if (matcher.group(1) != null) return INT_TYPE;
-        if (matcher.group(2) != null) return DOUBLE_TYPE;
-        if (matcher.group(3) != null) return STRING_TYPE;
-        if (matcher.group(4) != null) return BOOLEAN_TYPE;
-        if (matcher.group(5) != null) return CHAR_TYPE;
+        if (matcher.group(1) != null) return STRING_TYPE;
+        if (matcher.group(2) != null) return CHAR_TYPE;
+        if (matcher.group(3) != null) return BOOLEAN_TYPE;
+        if (matcher.group(4) != null) return INT_TYPE;
+        if (matcher.group(5) != null) return DOUBLE_TYPE;
         return null;
     }
 

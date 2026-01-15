@@ -19,7 +19,8 @@ public class LineReader {
         IF_WHILE,
         METHOD_DEF,
         METHOD_CALL,
-        ILLEGAL
+        ILLEGAL,
+        RETURN
     }
 
     public static LINE_TYPE classifyLine(String line){
@@ -72,7 +73,9 @@ public class LineReader {
             }
             return LINE_TYPE.METHOD_CALL;
         }
-
+        if (line.trim().matches(RETURN_STATEMENT)) {
+            return LINE_TYPE.RETURN;
+        }
         return LINE_TYPE.ILLEGAL;
     }
 

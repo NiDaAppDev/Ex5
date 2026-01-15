@@ -9,13 +9,16 @@ import static ex5.reg_ex_patterns.IfWhileRegExPatterns.CONDITION_BLOCK_PATTERN;
 
 public class IfWhileUtils {
 
-    public static ArrayList<String> extractVarNamesInCondition(String conditionBlock) {
+    public static ArrayList<String> extractVarNamesInCondition(String conditionBlock) throws Exception {
+        Matcher blockMatcher = CONDITION_BLOCK_PATTERN.matcher(conditionBlock);
+        if (!blockMatcher.matches()) throw new Exception();
+
         ArrayList<String> varNames = new ArrayList<>();
-        String[] conditions =  extractConditionsFromBlock(conditionBlock);
-        for(String condition : conditions) {
-            Matcher varNameM = VALID_VARIABLE_CALL.matcher(condition);
-            if(varNameM.matches()) {
-                varNames.add(varNameM.group(1));
+        Matcher varNameM = VALID_VARIABLE_CALL.matcher(conditionBlock);
+        while (varNameM.find()) {
+            String varName = varNameM.group();
+            if (!varName.equals("true") && !varName.equals("false") && !varName.matches("-?\\d+.*")) {
+                varNames.add(varName);
             }
         }
         return varNames;
@@ -23,6 +26,7 @@ public class IfWhileUtils {
 
     private static String[] extractConditionsFromBlock(String conditionBlock) {
         Matcher conditionMatcher = CONDITION_BLOCK_PATTERN.matcher(conditionBlock);
+        if (!conditionMatcher.matches()) return new String[0];
         String[] conditions =  new String[conditionMatcher.groupCount()];
         for(int i = 0; i < conditions.length; i++) {
             conditions[i] = conditionMatcher.group(i);

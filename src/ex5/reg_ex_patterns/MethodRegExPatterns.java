@@ -45,4 +45,6 @@ public class MethodRegExPatterns {
     public static final Pattern METHOD_CALL_PATTERN =
             Pattern.compile(METHOD_CALL);
 
+    public static final String RETURN_STATEMENT =
+            ("return\\s*;");
 }

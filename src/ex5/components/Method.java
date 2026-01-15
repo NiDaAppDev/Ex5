@@ -16,13 +16,16 @@ public class Method {
     private final HashMap<String, Variable> parameters;
     private final List<String> paramTypes;
     private String[] methodBody;
+    private Scope parent;
 
     public Method(String[] groups, String[] codeLines, Scope parent) throws Exception {
         this.methodName = groups[1];
-        validateName();
+        this.parent = parent;
         this.methodBody = codeLines;
         this.parameters = new HashMap<>();
         this.paramTypes = new ArrayList<>();
+
+        validateName();
 
         String paramString = groups[2];
         List<NameVariablePair> params = MethodUtils.extractMethodParameters(paramString);
@@ -33,10 +36,11 @@ public class Method {
             parameters.put(name, var);
             paramTypes.add(var.getType());
         }
+    }
 
-        this.scope = new Scope(parent,
-                codeLines,
-                parameters);
+    public void validate() throws Exception {
+        this.scope = new Scope(parent, methodBody,new HashMap<>(parameters));
+        this.scope.parseCodeBlock();
     }
 
     public void call(List<Variable> callArgs) throws Exception{
@@ -67,7 +71,7 @@ public class Method {
     }
 
     private void validateName() throws Exception {
-        if(this.scope.getMethods().containsKey(this.methodName)) {
+        if(parent.getMethods().containsKey(this.methodName)) {
             throw new Exception();
         }
     }
