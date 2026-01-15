@@ -14,7 +14,7 @@ public class VariableRegExPatterns {
     private static final String ARRAY_BRACKET = "[\\[\\]]";
 
     //Variables Basics
-    private static final String FINAL = "final";
+    public static final String FINAL = "final";
     /**
      * Regex that recognizes an int type.
      */
