@@ -56,6 +56,10 @@ public class Method {
         }
     }
 
+    public String getMethodName() {
+        return methodName;
+    }
+
     private boolean isTypeCompatible(String expectedType, String actualType) {
         return expectedType.equals(actualType) ||
                 (expectedType.equals(DOUBLE_TYPE) && actualType.equals(INT_TYPE)) ||

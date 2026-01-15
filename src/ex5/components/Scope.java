@@ -3,9 +3,12 @@ package ex5.components;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 
 import ex5.utils.*;
+
+import javax.sound.sampled.Line;
 
 import static ex5.reg_ex_patterns.IfWhileRegExPatterns.SINGLE_CONDITION_PATTERN;
 
@@ -69,7 +72,7 @@ public class Scope {
         return allVariables;
     }
 
-    private void parseCodeBlock() {
+    private void parseCodeBlock() throws Exception{
         for (int i = 0; i < codeBlock.length; i++) {
             LineReader.LINE_TYPE currentLineType = LineReader.classifyLine(codeBlock[i]);
             switch (currentLineType) {
@@ -101,12 +104,30 @@ public class Scope {
                                 extractSubScopeCodeBlock(i))
                 );
                 case METHOD_DEF -> {
-
+                    if (parent != null) {
+                        throw new Exception();
+                    }
+                    String[] body = extractSubScopeCodeBlock(i);
+                    Method newMethod = new Method (LineReader.getCurrentGroups(), body, this);
+                    methods.put(newMethod.getMethodName(), newMethod);
+                    i += body.length - 1;
                 }
                 case METHOD_CALL -> {
-                    if(!methods.containsKey(LineReader.getCurrentGroups()[1])) {
-                        //TODO: throw an "illegal" exception.
+                    if(!methods.containsKey(LineReader.getCurrentGroups()[1]) || parent == null) {
+                        throw new Exception();
                     }
+
+                    String methodName = LineReader.getCurrentGroups()[1];
+                    String paramString = LineReader.getCurrentGroups()[2];
+
+                    if (!getMethods().containsKey(methodName)) {
+                        throw new Exception();
+                    }
+
+                    Method method = getMethods().get(methodName);
+
+                    List<Variable> args = MethodUtils.getArgsFromCall(paramString, this);
+                    method.call(args);
                 }
                 case ILLEGAL, default -> {//TODO: throw an "illegal" exception.}
                 }
