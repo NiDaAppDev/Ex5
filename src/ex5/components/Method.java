@@ -1,8 +1,14 @@
 package ex5.components;
 
+import ex5.utils.MethodUtils;
+import ex5.utils.NameVariablePair;
+import ex5.utils.VariableUtils;
+import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 
 public class Method {
     private Scope scope;
@@ -11,15 +17,21 @@ public class Method {
     private final List<String> paramTypes;
     private String[] methodBody;
 
-    public Method(String[] groups, String[] codeLines, Scope parent) {
+    public Method(String[] groups, String[] codeLines, Scope parent) throws Exception {
         this.methodName = groups[1];
+        validateName();
         this.methodBody = codeLines;
         this.parameters = new HashMap<>();
         this.paramTypes = new ArrayList<>();
 
         String paramString = groups[2];
-        if (paramString != null && !paramString.isEmpty()) {
-            parseParameters(paramString);
+        List<NameVariablePair> params = MethodUtils.extractMethodParameters(paramString);
+
+        for (NameVariablePair param : params) {
+            String name = param.getName();
+            Variable var = param.getVariable();
+            parameters.put(name, var);
+            paramTypes.add(var.getType());
         }
 
         this.scope = new Scope(parent,
@@ -27,25 +39,32 @@ public class Method {
                 parameters);
     }
 
-    private void parseParameters(String paramString) {
-        String[] paramGroups = paramString.split(",");
-        for (String paramGroup : paramGroups) {
-            paramGroup = paramGroup.trim();
-            boolean isParamFinal = false;
-            if (paramGroup.startsWith("final")) {
-                isParamFinal = true;
-                paramGroup = paramGroup.substring(5).trim();
+    public void call(List<Variable> callArgs) throws Exception{
+        if (paramTypes.size() != callArgs.size()) {
+            throw new Exception();
+        }
+
+        for (int i = 0; i < paramTypes.size(); i++) {
+            String expectedType = paramTypes.get(i);
+            Variable actualArg = callArgs.get(i);
+            if(!actualArg.isInitialized()) {
+                throw new Exception();
             }
-            String[] paramParts = paramGroup.split("\\s+");
-            String type = paramParts[0];
-            String name = paramParts[1];
-            Variable var = new Variable(isParamFinal, type, false);
-            parameters.put(name, var);
-            paramTypes.add(type);
+            if(!isTypeCompatible(expectedType, actualArg.getType())) {
+                throw new Exception();
+            }
         }
     }
 
-    public void call(Varialbe[] params) {
-        
+    private boolean isTypeCompatible(String expectedType, String actualType) {
+        return expectedType.equals(actualType) ||
+                (expectedType.equals(DOUBLE_TYPE) && actualType.equals(INT_TYPE)) ||
+                (expectedType.equals(BOOLEAN_TYPE) && (actualType.equals(INT_TYPE) || actualType.equals(DOUBLE_TYPE)));
+    }
+
+    private void validateName() throws Exception {
+        if(this.scope.getMethods().containsKey(this.methodName)) {
+            throw new Exception();
+        }
     }
 }
