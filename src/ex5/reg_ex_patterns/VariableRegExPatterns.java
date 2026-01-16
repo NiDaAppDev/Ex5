@@ -14,13 +14,33 @@ public class VariableRegExPatterns {
     private static final String ARRAY_BRACKET = "[\\[\\]]";
 
     //Variables Basics
+    /**
+     * Regex that recognizes the 'final' keyword
+     */
     public static final String FINAL = "final";
+    /**
+     * Regex that recognizes an int type.
+     */
     public static final String INT_TYPE = "int";
+    /**
+     * Regex that recognizes a double type.
+     */
     public static final String DOUBLE_TYPE = "double";
+    /**
+     * Regex that recognizes a String type.
+     */
     public static final String STRING_TYPE = "String";
+    /**
+     * Regex that recognizes a boolean type.
+     */
     public static final String BOOLEAN_TYPE = "boolean";
+    /**
+     * Regex that recognizes a char type.
+     */
     public static final String CHAR_TYPE = "char";
-
+    /**
+     * Regex that validates a variable's type.
+     */
     public static final String VARIABLE_TYPE =
             INT_TYPE + OR +
                     DOUBLE_TYPE + OR +
@@ -28,14 +48,32 @@ public class VariableRegExPatterns {
                     BOOLEAN_TYPE + OR +
                     CHAR_TYPE;
 
+    /**
+     * Regex that validates a variable's name.
+     */
     public static final String VAR_NAME = "\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b";
 
+    /**
+     * Regex that validates an int value.
+     */
     public static final String INT_VALUE = PLUS_MINUS + "?\\d+";
+    /**
+     * Regex that validates a double value.
+     */
     public static final String DOUBLE_VALUE = PLUS_MINUS + "?(?:\\d+\\.?\\d*|\\.\\d+)";
-    private static final String STRING_VALUE = "\"[^\"]*\"";
+    /**
+     * Regex that validates a String value.
+     */
+    public static final String STRING_VALUE = "\"[^\"]*\"";
+    /**
+     * Regex that validates a boolean value.
+     */
     public static final String BOOLEAN_VALUE = "true" + OR + "false";
+    /**
+     * Regex that validates a char value.
+     */
+    public static final String CHAR_VALUE = "'[^']'";
 
-    private static final String CHAR_VALUE = "'[^']'";
     private static final String VARIABLE_VALUE =
             INT_VALUE + OR +
                     DOUBLE_VALUE + OR +
@@ -48,9 +86,6 @@ public class VariableRegExPatterns {
     private static final String EQ = SPACE_CHAR + "*=" + SPACE_CHAR + "*";
     private static final String COMMA = SPACE_CHAR + "*," + SPACE_CHAR + "*";
 
-    //Uninitialized variable, name only
-    private static final String VALID_VARIABLE_NAME_ONLY = VAR_NAME;
-
     //Initialized variable
     private static final String VALID_VARIABLE_ASSIGNMENT =
             VAR_NAME + EQ + VARIABLE_VALUE;
@@ -58,45 +93,86 @@ public class VariableRegExPatterns {
     private static final String VALID_VARIABLE_ASSIGNMENT_LINE =
             SPACES_INITIAL + "(" + VALID_VARIABLE_ASSIGNMENT + ")" +
                     SPACE_CHAR + "*" + ENDING_SEMICOLON + SPACES_ENDING;
+    /*
+     * Group 1 captures an assignment of a value to a variable
+     */
 
     private static final String SINGLE_VARIABLE_INIT_VALID_CONTENT =
-            VALID_VARIABLE_ASSIGNMENT + OR + VALID_VARIABLE_NAME_ONLY;
+            VALID_VARIABLE_ASSIGNMENT + OR + VAR_NAME;
 
     private static final String VARIABLES_DECLARATION_CONTENT =
             "(" + SINGLE_VARIABLE_INIT_VALID_CONTENT + ")(?:" +
                     SPACE_CHAR + "*," + SPACE_CHAR + "*(" +
                     SINGLE_VARIABLE_INIT_VALID_CONTENT + "))*";
+    /*
+     * Relevant to the statement above:
+     * Captured groups hold the variables' in the declaration
+     */
 
     //Variables Initialization
     private static final String VARIABLE_DECLARATION_LINE =
             SPACES_INITIAL
-                    + "(" + FINAL + SPACE_CHAR + "+)?"
-                    + "(" + VARIABLE_TYPE + ")\\s+"
+                    + "(?:(" + FINAL + ")" + SPACE_CHAR + "+)?"
+                    + "(" + VARIABLE_TYPE + ")" + SPACE_CHAR + "+"
                     + "(" + VARIABLES_DECLARATION_CONTENT + ")"
                     + ENDING_SEMICOLON;
+    /*
+     * Relevant to the statement above:
+     * Group 1 captures whether the variable is final or not (captures final if it is, null if not)
+     * Group 2 captures the variable's type
+     * Group 3 captures the content of the variables' definitions - later to be validated
+     */
 
     private static final String VALUE_TYPE =
-            "(" + STRING_VALUE + ")" + OR +      // Group 1: String
-                    "(" + CHAR_VALUE + ")" + OR +        // Group 2: Char
-                    "(" + BOOLEAN_VALUE + ")" + OR +     // Group 3: Boolean only
-                    "(" + INT_VALUE + ")" + OR +         // Group 4: Int (check before double)
-                    "(" + DOUBLE_VALUE + ")";            // Group 5: Double
+            "(" + STRING_VALUE + ")" + OR +
+                    "(" + CHAR_VALUE + ")" + OR +
+                    "(" + BOOLEAN_VALUE + ")" + OR +
+                    "(" + INT_VALUE + ")" + OR +
+                    "(" + DOUBLE_VALUE + ")";
+    /*
+     * Relevant to the statement above:
+     * Group 1 captures if the value is a String
+     * Group 2 captures if the value is a char
+     * Group 3 captures if the value is a boolean
+     * Group 4 captures if the value is an int
+     * Group 5 captures if the value is a double
+     */
 
+    /**
+     * This pattern should be used to validate the whole structure of a variable's declaration line.
+     */
     public static final Pattern VARIABLE_DECLARATION_PATTERN =
             Pattern.compile(VARIABLE_DECLARATION_LINE);
 
+    /**
+     * This pattern should be used to validate and extract the declared variables in a variable
+     * declaration line.
+     */
     public static final Pattern VARIABLE_DEFENITION_CONTENT_PATTERN =
             Pattern.compile(VARIABLES_DECLARATION_CONTENT);
 
+    /**
+     * This pattern should be used to parse the type of a value.
+     */
     public static final Pattern VALUE_TYPE_PATTERN =
             Pattern.compile(VALUE_TYPE);
 
+    /**
+     * This pattern should be used to validate an assignment of a value to a variable.
+     */
     public static final Pattern ASSIGN_VALUE_TO_VARIABLE_PATTERN =
             Pattern.compile(VALID_VARIABLE_ASSIGNMENT_LINE);
 
+    /**
+     * This pattern should be used to validate a call to a variable (usually
+     * as a boolean in a condition)
+     */
     public static final Pattern VALID_VARIABLE_CALL =
             Pattern.compile(VAR_NAME);
 
+    /**
+     * This pattern should be used to validate and extract
+     */
     public static final Pattern FIND_SINGLE_VAR_PATTERN =
             Pattern.compile(SINGLE_VARIABLE_INIT_VALID_CONTENT);
 }
