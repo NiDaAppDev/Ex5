@@ -69,7 +69,7 @@ public class VariableRegExPatterns {
 
     //Variables Initialization
     private static final String VARIABLE_DECLARATION_LINE =
-            "\\s*"
+            SPACES_INITIAL
                     + "(" + FINAL + SPACE_CHAR + "+)?"
                     + "(" + VARIABLE_TYPE + ")\\s+"
                     + "(" + VARIABLES_DECLARATION_CONTENT + ")"
