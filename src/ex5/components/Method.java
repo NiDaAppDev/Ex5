@@ -97,9 +97,9 @@ public class Method {
         if (lastNonEmptyIndex == -1) {
             throw new IllegalException("Method doesn't have a return statement.");
         }
-        String lineToCheck = codeLines[lastNonEmptyIndex].trim();
-        if (!MethodRegExPatterns.RETURN_STATEMENT.matcher(lineToCheck).matches()) {
-            throw new IllegalException("Method must end with a return statement.");
+        LineAnalysis lastLine = LineReader.classifyLine(codeLines[lastNonEmptyIndex].trim());
+        if(!lastLine.getType().equals(LineReader.LINE_TYPE.RETURN)) {
+            throw new IllegalException("Method doesn't have a return statement.");
         }
     }
 
