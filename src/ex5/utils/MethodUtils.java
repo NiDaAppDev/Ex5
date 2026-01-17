@@ -13,9 +13,9 @@ import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
 public class MethodUtils {
 
-    public static List<NameVariablePair> extractMethodParameters(String data) {
+    public static List<NameVariablePair> extractMethodParameters(String data) throws IllegalException {
         List<NameVariablePair> pairs = new ArrayList<>();
-        if (data == null) {
+        if (data == null || data.trim().isEmpty()) {
             return pairs;
         }
 
@@ -29,6 +29,9 @@ public class MethodUtils {
                 paramGroup = paramGroup.substring(5).trim();
             }
             String[] paramParts = paramGroup.split(SPACE_CHAR + "+");
+            if (paramParts.length != 2) {
+                throw new IllegalException("Invalid parameter declaration");
+            }
             String type = paramParts[0];
             String name = paramParts[1];
             Variable var = new Variable(isParamFinal, type, true);

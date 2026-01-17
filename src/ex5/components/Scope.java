@@ -138,6 +138,11 @@ public class Scope {
 
                     getMethods().get(methodName).call(paramString);
                 }
+                case RETURN -> {
+                    if(parent == null) {
+                        throw new IllegalException("Return statement outside of method.");
+                    }
+                }
                 default -> throw new IllegalException("Couldn't analyze a line - not an sJava code line.");
             }
         }

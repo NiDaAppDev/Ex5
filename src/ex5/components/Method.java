@@ -1,6 +1,9 @@
 package ex5.components;
 
 import ex5.IllegalException;
+import ex5.reg_ex_patterns.MethodRegExPatterns;
+import ex5.utils.LineAnalysis;
+import ex5.utils.LineReader;
 import ex5.utils.MethodUtils;
 import ex5.utils.NameVariablePair;
 
@@ -35,14 +38,14 @@ public class Method {
             paramTypes.add(var.getType());
         }
 
-        if(codeLines.length > 0) {
             this.scope = new Scope(parent,
                     codeLines,
                     parameters);
-        }
+
         this.parentScope = parent;
 
         validateName();
+        validateReturn(codeLines);
     }
 
     public void call(String paramString) throws IllegalException {
@@ -79,6 +82,24 @@ public class Method {
         if(!scope.getMethods().isEmpty() &&
                 scope.getMethods().containsKey(methodName)) {
             throw new IllegalException("Trying to create a method with an existing method name");
+        }
+    }
+
+    private void validateReturn(String[] codeLines)  throws IllegalException {
+        int lastNonEmptyIndex = -1;
+        for (int i = codeLines.length - 1; i >= 0; i--) {
+            String line = codeLines[i].trim();
+            if (!line.isEmpty()) {
+                lastNonEmptyIndex = i;
+                break;
+            }
+        }
+        if (lastNonEmptyIndex == -1) {
+            throw new IllegalException("Method doesn't have a return statement.");
+        }
+        String lineToCheck = codeLines[lastNonEmptyIndex].trim();
+        if (!MethodRegExPatterns.RETURN_STATEMENT.matcher(lineToCheck).matches()) {
+            throw new IllegalException("Method must end with a return statement.");
         }
     }
 

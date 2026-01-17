@@ -17,6 +17,7 @@ public class LineReader {
         IF_WHILE,
         METHOD_DEF,
         METHOD_CALL,
+        RETURN,
         ILLEGAL
     }
 
@@ -69,6 +70,14 @@ public class LineReader {
                 current_groups[i] = methodCallM.group(i);
             }
             return new LineAnalysis(LINE_TYPE.METHOD_CALL, current_groups);
+        }
+        Matcher returnM = RETURN_STATEMENT.matcher(line);
+        if (returnM.matches()) {
+            current_groups = new String[returnM.groupCount() + 1];
+            for(int i = 0; i <= returnM.groupCount(); i++){
+                current_groups[i] = returnM.group(i);
+            }
+            return new LineAnalysis(LINE_TYPE.RETURN, current_groups);
         }
 
         return new LineAnalysis(LINE_TYPE.ILLEGAL, current_groups);

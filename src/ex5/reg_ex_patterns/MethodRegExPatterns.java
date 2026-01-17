@@ -9,8 +9,6 @@ import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 public class MethodRegExPatterns {
 
     private static final String METHOD_NAME = "\\b[a-zA-Z]\\w*\\b";
-    private static final String METHOD_PARAMETER =
-            VARIABLE_TYPE + SPACE_CHAR + "+" + VAR_NAME;
     private static final String METHOD_SIGNATURE =
             SPACES_INITIAL + "void" + SPACE_CHAR + "+(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
@@ -45,6 +43,6 @@ public class MethodRegExPatterns {
     public static final Pattern METHOD_CALL_PATTERN =
             Pattern.compile(METHOD_CALL);
 
-    public static final String RETURN_STATEMENT =
-            ("return\\s*;");
+    public static final Pattern RETURN_STATEMENT =
+            Pattern.compile("^\\s*return\\s*;\\s*$");
 }
