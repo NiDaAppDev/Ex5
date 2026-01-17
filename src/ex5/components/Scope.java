@@ -21,7 +21,7 @@ public class Scope {
                  HashMap<String, Variable> variables) {
         this.parent = parent;
         this.codeBlock = codeBlock;
-        this.variables = variables;
+        this.variables = new  HashMap<>(variables);
         allVisibleVariables = getAllVisibleVariables();
         methods = new HashMap<>();
         ifWhileStatements = new ArrayList<>();
@@ -40,7 +40,7 @@ public class Scope {
     public Scope(String[] codeBlock) {
         this.parent = null;
         this.codeBlock = codeBlock;
-        this.variables = new  HashMap<>();
+        this.variables = new HashMap<>();
         allVisibleVariables = getAllVisibleVariables();
         methods = new HashMap<>();
         ifWhileStatements = new ArrayList<>();
@@ -108,7 +108,7 @@ public class Scope {
                                     currentCapturedGroups[1],
                                     body)
                     );
-                    i += body.length + 2;
+                    i += body.length + 1;
                 }
                 case METHOD_DEF -> {
                     if (parent != null) {
@@ -121,10 +121,10 @@ public class Scope {
                             body,
                             this);
                     methods.put(newMethod.getMethodName(), newMethod);
-                    i += body.length + 2;
+                    i += body.length + 1;
                 }
                 case METHOD_CALL -> {
-                    if(!methods.containsKey(currentCapturedGroups[1]) || parent == null) {
+                    if(!getMethods().containsKey(currentCapturedGroups[1]) || parent == null) {
                         throw new IllegalException("Calling to a method that doesn't exist, or " +
                                 "trying to call a method from the global scope.");
                     }
@@ -136,7 +136,7 @@ public class Scope {
                         throw new IllegalException("Calling to a method that doesn't exist.");
                     }
 
-                    getMethods().get(methodName).call(paramString);
+                    getMethods().get(methodName).call(paramString, variables);
                 }
                 case RETURN -> {
                     if(parent == null) {
@@ -163,7 +163,7 @@ public class Scope {
                 codeBlock,
                 currentIndex + 1,
                 codeBlock.length);
-        int blockClosingBracketIndex = SubScopeExtractor.getBlockEndIndex(remainingCode) + 1;
+        int blockClosingBracketIndex = currentIndex + SubScopeExtractor.getBlockEndIndex(remainingCode) + 1;
         if (blockClosingBracketIndex == -1) {
             throw new IllegalException("Couldn't find block closing bracket.");
         }

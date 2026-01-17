@@ -60,7 +60,8 @@ public class VariableUtils {
                 (!type.equals(CHAR_TYPE) || valueTypeM.group(2) != null) &&
                 (!type.equals(BOOLEAN_TYPE) || valueTypeM.group(3) != null) &&
                 (!type.equals(INT_TYPE) || valueTypeM.group(4) != null) &&
-                (!type.equals(DOUBLE_TYPE) || valueTypeM.group(5) != null);
+                (!type.equals(DOUBLE_TYPE) ||
+                        (valueTypeM.group(4) != null || valueTypeM.group(5) != null));
     }
 
     private static boolean isVariableAssignmentLegal(HashMap<String, Variable> globalVariables,

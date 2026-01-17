@@ -5,6 +5,7 @@ import ex5.components.Variable;
 import ex5.IllegalException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 
@@ -40,18 +41,20 @@ public class MethodUtils {
         return pairs;
     }
 
-    public static List<Variable> getArgsFromCall(String data, Scope currScope) throws IllegalException {
+    public static List<Variable> getArgsFromCall(String data,
+                                                 HashMap<String, Variable> visibleVars)
+            throws IllegalException {
         List<Variable> result = new ArrayList<>();
 
-        if (data == null) return result;
+        if (data == null || data.isEmpty()) return result;
 
         String[] rawArgs = data.split(",");
 
         for (String arg : rawArgs) {
             arg = arg.trim();
             Variable var = null;
-            if (currScope.getAllVisibleVariables().containsKey(arg)) {
-                var = currScope.getAllVisibleVariables().get(arg);
+            if (visibleVars.containsKey(arg)) {
+                var = visibleVars.get(arg);
             }
             else {
                 String constantType = getConstantType(arg);

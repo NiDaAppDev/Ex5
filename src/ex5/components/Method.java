@@ -38,9 +38,9 @@ public class Method {
             paramTypes.add(var.getType());
         }
 
-            this.scope = new Scope(parent,
-                    codeLines,
-                    parameters);
+        this.scope = new Scope(parent,
+                codeLines,
+                parameters);
 
         this.parentScope = parent;
 
@@ -48,8 +48,13 @@ public class Method {
         validateReturn(codeLines);
     }
 
-    public void call(String paramString) throws IllegalException {
-        List<Variable> callArgs = MethodUtils.getArgsFromCall(paramString, parentScope);
+    public void call(String paramString,
+                     HashMap<String, Variable> additionalVisibleVariables)
+            throws IllegalException {
+        HashMap<String, Variable> visibleVariables = scope.getAllVisibleVariables();
+        visibleVariables.putAll(additionalVisibleVariables);
+        List<Variable> callArgs = MethodUtils.getArgsFromCall(paramString,
+                visibleVariables);
         if (paramTypes.size() != callArgs.size()) {
             throw new IllegalException("Not enough arguments for a method call.");
         }

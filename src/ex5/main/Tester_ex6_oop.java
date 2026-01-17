@@ -17,8 +17,8 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 public class Tester_ex6_oop {
-//	private static Path pathToFiles = Paths.get("/home/nitzan-daloomy/IntelliJProjects/Ex5/src", "tester_files");
- 	private static Path pathToFiles = Paths.get("C:\\Users\\tomer\\Desktop\\The Science of Computers\\java\\Ex5\\src\\tester_files");
+	private static Path pathToFiles = Paths.get("src", "tester_files");
+// 	private static Path pathToFiles = Paths.get("C:\\Users\\tomer\\Desktop\\The Science of Computers\\java\\Ex5\\src\\tester_files");
 
     private static Path pathToTests = Paths.get(pathToFiles.toString(), "tests");
 	private static Path pathToUserTests = Paths.get(pathToTests.toString(), "specificTests");
