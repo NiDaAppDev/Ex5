@@ -5,7 +5,7 @@ import ex5.utils.IfWhileUtils;
 
 import java.util.regex.Matcher;
 
-import static ex5.reg_ex_patterns.IfWhileRegExPatterns.SINGLE_CONDITION_PATTERN;
+import static ex5.reg_ex_patterns.VariableRegExPatterns.CONDITIONAL_VARIABLE_TYPE_PATTERN;
 
 public class IfWhile {
 
@@ -27,7 +27,7 @@ public class IfWhile {
                     !parentScope.getAllVisibleVariables().get(varName).isInitialized()) {
                 throw new IllegalException("Used variable doesn't exist or isn't initialized.");
             }
-            Matcher conditionalVarM = SINGLE_CONDITION_PATTERN.matcher(
+            Matcher conditionalVarM = CONDITIONAL_VARIABLE_TYPE_PATTERN.matcher(
                     parentScope.getAllVisibleVariables().get(varName).getType());
             if(!conditionalVarM.matches()) {
                 throw new IllegalException("Used variable has incompatible type (non-boolean inside" +

@@ -24,6 +24,10 @@ public class IfWhileRegExPatterns {
                     INT_VALUE + OR +
                     DOUBLE_VALUE + OR +
                     VAR_NAME;
+    private static final String SINGLE_VALID_BOOLEAN =
+            BOOLEAN_VALUE + OR +
+                    DOUBLE_VALUE + OR +
+                    INT_VALUE;
     private static final String VALID_CONDITION_BLOCK =
             SPACE_CHAR + "*(" + SINGLE_VALID_CONDITION + ")" + SPACE_CHAR +
                     "*(?:(?:\\|\\|" + OR + "&&)" + SPACE_CHAR +
@@ -47,4 +51,9 @@ public class IfWhileRegExPatterns {
      * This pattern should be used to validate a condition block.
      */
     public static final Pattern CONDITION_BLOCK_PATTERN = Pattern.compile(VALID_CONDITION_BLOCK);
+
+    /**
+     * This pattern should be used to validate a single condition that isn't a variable name.
+     */
+    public static final Pattern BOOLEAN_CONST_PATTERN = Pattern.compile(SINGLE_VALID_BOOLEAN);
 }

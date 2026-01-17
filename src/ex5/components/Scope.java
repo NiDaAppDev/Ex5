@@ -98,6 +98,9 @@ public class Scope {
                             varAssignPair.getValue());
                 }
                 case IF_WHILE -> {
+                    if(parent == null) {
+                        throw new IllegalException("Trying to open an if/while block in the global scope.");
+                    }
                     String[] body = extractSubScopeCodeBlock(i);
                     ifWhileStatements.add(
                             new IfWhile(

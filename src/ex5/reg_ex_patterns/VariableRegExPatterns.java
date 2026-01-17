@@ -48,6 +48,12 @@ public class VariableRegExPatterns {
                     BOOLEAN_TYPE + OR +
                     CHAR_TYPE;
 
+
+    private static final String CONDITIONAL_TYPE =
+            BOOLEAN_TYPE + OR +
+            DOUBLE_TYPE + OR +
+            INT_TYPE;
+
     /**
      * Regex that validates a variable's name.
      */
@@ -182,4 +188,10 @@ public class VariableRegExPatterns {
      */
     public static final Pattern VALID_VARIABLE_CALL =
             Pattern.compile(CAPTURED_VAR_NAME);
+
+    /**
+     * This pattern should be used to validate a variable's type is conditional.
+     */
+    public static final Pattern CONDITIONAL_VARIABLE_TYPE_PATTERN =
+            Pattern.compile(CONDITIONAL_TYPE);
 }
