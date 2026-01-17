@@ -71,7 +71,7 @@ public class LineReader {
             }
             return new LineAnalysis(LINE_TYPE.METHOD_CALL, current_groups);
         }
-        Matcher returnM = RETURN_STATEMENT.matcher(line);
+        Matcher returnM = RETURN_STATEMENT_PATTERN.matcher(line);
         if (returnM.matches()) {
             current_groups = new String[returnM.groupCount() + 1];
             for(int i = 0; i <= returnM.groupCount(); i++){

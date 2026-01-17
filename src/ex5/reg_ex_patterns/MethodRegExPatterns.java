@@ -2,8 +2,7 @@ package ex5.reg_ex_patterns;
 
 import java.util.regex.Pattern;
 
-import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACES_INITIAL;
-import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACE_CHAR;
+import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
 public class MethodRegExPatterns {
@@ -34,6 +33,9 @@ public class MethodRegExPatterns {
      * Group 2 captures the parameters block
      */
 
+    private static final String RETURN_STATEMENT =
+            SPACES_INITIAL + "return" + ENDING_SEMICOLON;
+
     public static final Pattern METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
 
@@ -43,6 +45,6 @@ public class MethodRegExPatterns {
     public static final Pattern METHOD_CALL_PATTERN =
             Pattern.compile(METHOD_CALL);
 
-    public static final Pattern RETURN_STATEMENT =
-            Pattern.compile("^\\s*return\\s*;\\s*$");
+    public static final Pattern RETURN_STATEMENT_PATTERN =
+            Pattern.compile(RETURN_STATEMENT);
 }
