@@ -8,7 +8,7 @@ import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACES_INITIAL;
 public class IgnoreLineRegExPatterns {
 
     private static final String EMPTY_LINE = SPACES_INITIAL + "$";
-    private static final String COMMENT_LINE = "^//";
+    private static final String COMMENT_LINE = "^//.*";
     private static final String IGNORABLE_LINE = EMPTY_LINE + OR + COMMENT_LINE;
 
 //    private static final String ILLEGAL_ONE_LINE_COMMENT = ".+\\/\\/";
