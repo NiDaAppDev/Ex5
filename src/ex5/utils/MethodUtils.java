@@ -2,6 +2,7 @@ package ex5.utils;
 
 import ex5.components.Scope;
 import ex5.components.Variable;
+import ex5.IllegalException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,7 @@ public class MethodUtils {
         return pairs;
     }
 
-    public static List<Variable> getArgsFromCall(String data, Scope currScope) throws Exception {
+    public static List<Variable> getArgsFromCall(String data, Scope currScope) throws IllegalException {
         List<Variable> result = new ArrayList<>();
 
         if (data == null) return result;
@@ -56,7 +57,7 @@ public class MethodUtils {
                 }
             }
             if (var == null) {
-                throw new Exception();
+                throw new IllegalException("Couldn't parse one or more of a method parameters.");
             }
             result.add(var);
         }

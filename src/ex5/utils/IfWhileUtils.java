@@ -1,5 +1,7 @@
 package ex5.utils;
 
+import ex5.IllegalException;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 
@@ -9,7 +11,8 @@ import static ex5.reg_ex_patterns.IfWhileRegExPatterns.CONDITION_BLOCK_PATTERN;
 
 public class IfWhileUtils {
 
-    public static ArrayList<String> extractVarNamesInCondition(String conditionBlock) {
+    public static ArrayList<String> extractVarNamesInCondition(String conditionBlock)
+            throws IllegalException {
         ArrayList<String> varNames = new ArrayList<>();
         String[] conditions =  extractConditionsFromBlock(conditionBlock);
         for(String condition : conditions) {
@@ -21,11 +24,14 @@ public class IfWhileUtils {
         return varNames;
     }
 
-    private static String[] extractConditionsFromBlock(String conditionBlock) {
+    private static String[] extractConditionsFromBlock(String conditionBlock) throws IllegalException {
         Matcher conditionMatcher = CONDITION_BLOCK_PATTERN.matcher(conditionBlock);
-        String[] conditions =  new String[conditionMatcher.groupCount()];
+        if(!conditionMatcher.matches()) {
+            throw new IllegalException("Tried to find a condition, but couldn't.");
+        }
+        String[] conditions =  new String[conditionMatcher.groupCount() - 1];
         for(int i = 0; i < conditions.length; i++) {
-            conditions[i] = conditionMatcher.group(i);
+            conditions[i] = conditionMatcher.group(i + 1);
         }
         return conditions;
     }

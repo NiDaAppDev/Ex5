@@ -1,16 +1,10 @@
 package ex5.components;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.regex.Matcher;
 
+import ex5.IllegalException;
 import ex5.utils.*;
-
-import javax.sound.sampled.Line;
-
-import static ex5.reg_ex_patterns.IfWhileRegExPatterns.SINGLE_CONDITION_PATTERN;
 
 public class Scope {
 
@@ -72,77 +66,101 @@ public class Scope {
         return allVariables;
     }
 
-    private void parseCodeBlock() throws Exception{
+    public void parseCodeBlock() throws IllegalException {
         for (int i = 0; i < codeBlock.length; i++) {
-            LineReader.LINE_TYPE currentLineType = LineReader.classifyLine(codeBlock[i]);
+            LineAnalysis currentLineAnalysis = LineReader.classifyLine(codeBlock[i]);
+            LineReader.LINE_TYPE currentLineType = currentLineAnalysis.getType();
+            String[] currentCapturedGroups = currentLineAnalysis.getGroups();
             switch (currentLineType) {
                 case IGNORE -> {
                 }
                 case VAR_DEF -> {
                     for (NameVariablePair varPair :
-                            VariableUtils.extractDeclaredVariables(LineReader.getCurrentGroups())) {
+                            VariableUtils.extractDeclaredVariables(getAllVisibleVariables(),
+                                    currentCapturedGroups)) {
                         if (variables.containsKey(varPair.getName())) {
-                            //TODO: throw an "illegal" exception.
+                            throw new IllegalException("Trying to declare a variable with a name" +
+                                    " of a variable that already exists in his context.");
                         }
                         addVariable(varPair.getName(), varPair.getVariable());
                     }
                 }
                 case VAR_ASSIGN -> {
                     VariableAssignmentPair varAssignPair =
-                            VariableUtils.extractVariableAssignment(LineReader.getCurrentGroups()[1]);
+                            VariableUtils.extractVariableAssignment(currentCapturedGroups[1]);
                     if (!allVisibleVariables.containsKey(varAssignPair.getName())) {
-                        //TODO: throw an "illegal" exception.
+                        throw new IllegalException("Trying to assign to a variable that doesn't exist" +
+                                " in this context.");
                     }
                     VariableUtils.assignValueToVariable(
+                            getAllVisibleVariables(),
                             allVisibleVariables.get(varAssignPair.getName()),
                             varAssignPair.getValue());
                 }
-                case IF_WHILE -> ifWhileStatements.add(
-                        new IfWhile(
-                                this,
-                                LineReader.getCurrentGroups()[1],
-                                extractSubScopeCodeBlock(i))
-                );
+                case IF_WHILE -> {
+                    String[] body = extractSubScopeCodeBlock(i);
+                    ifWhileStatements.add(
+                            new IfWhile(
+                                    this,
+                                    currentCapturedGroups[1],
+                                    body)
+                    );
+                    i += body.length + 2;
+                }
                 case METHOD_DEF -> {
                     if (parent != null) {
-                        throw new Exception();
+                        throw new IllegalException("Trying to create a method in a scope that's not" +
+                                " the global scope.");
                     }
                     String[] body = extractSubScopeCodeBlock(i);
-                    Method newMethod = new Method (LineReader.getCurrentGroups(), body, this);
+                    Method newMethod = new Method(
+                            currentCapturedGroups,
+                            body,
+                            this);
                     methods.put(newMethod.getMethodName(), newMethod);
-                    i += body.length - 1;
+                    i += body.length + 2;
                 }
                 case METHOD_CALL -> {
-                    if(!methods.containsKey(LineReader.getCurrentGroups()[1]) || parent == null) {
-                        throw new Exception();
+                    if(!methods.containsKey(currentCapturedGroups[1]) || parent == null) {
+                        throw new IllegalException("Calling to a method that doesn't exist, or " +
+                                "trying to call a method from the global scope.");
                     }
 
-                    String methodName = LineReader.getCurrentGroups()[1];
-                    String paramString = LineReader.getCurrentGroups()[2];
+                    String methodName = currentCapturedGroups[1];
+                    String paramString = currentCapturedGroups[2];
 
                     if (!getMethods().containsKey(methodName)) {
-                        throw new Exception();
+                        throw new IllegalException("Calling to a method that doesn't exist.");
                     }
 
-                    Method method = getMethods().get(methodName);
-
-                    List<Variable> args = MethodUtils.getArgsFromCall(paramString, this);
-                    method.call(args);
+                    getMethods().get(methodName).call(paramString);
                 }
-                case ILLEGAL, default -> {//TODO: throw an "illegal" exception.}
-                }
+                default -> throw new IllegalException("Couldn't analyze a line - not an sJava code line.");
             }
+        }
+        parseSubScopesCodeBlocks();
+    }
+
+    private void parseSubScopesCodeBlocks() throws IllegalException {
+        for (IfWhile ifWhile : ifWhileStatements) {
+            ifWhile.parseCodeBlock();
+        }
+        for(Method method : methods.values()) {
+            method.parseCodeBlock();
         }
     }
 
-    private String[] extractSubScopeCodeBlock(int currentIndex) {
+    private String[] extractSubScopeCodeBlock(int currentIndex) throws IllegalException{
         String[] remainingCode = SubScopeExtractor.getSubScopeCodeBlock(
                 codeBlock,
                 currentIndex + 1,
                 codeBlock.length);
-        int blockClosingBracketIndex = SubScopeExtractor.getBlockEndIndex(remainingCode);
+        int blockClosingBracketIndex = SubScopeExtractor.getBlockEndIndex(remainingCode) + 1;
         if (blockClosingBracketIndex == -1) {
-            //TODO: throw an "illegal" exception.
+            throw new IllegalException("Couldn't find block closing bracket.");
+        }
+        if(blockClosingBracketIndex == 1) {
+            return new String[0];
         }
         return SubScopeExtractor.getSubScopeCodeBlock(
                 codeBlock,

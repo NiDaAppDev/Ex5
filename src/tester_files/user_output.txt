@@ -1,0 +1,5 @@
+Log started
+
+FAIL | School: error | User: 1 | 12.sjava
+FAIL | School: error | User: 1 | 03.sjava
+FAIL | School: error | User: 1 | 26.sjava

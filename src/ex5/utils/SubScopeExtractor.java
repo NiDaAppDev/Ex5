@@ -12,7 +12,7 @@ public class SubScopeExtractor {
     public static int getBlockEndIndex(String[] codeLines) {
         int remainingBracketsToCloseCount = 0;
         for (int i = 0; i < codeLines.length; i++) {
-            LINE_TYPE currentLineType = LineReader.classifyLine(codeLines[i]);
+            LINE_TYPE currentLineType = LineReader.classifyLine(codeLines[i]).getType();
             switch (currentLineType) {
                 case METHOD_DEF, IF_WHILE -> remainingBracketsToCloseCount++;
                 default -> {

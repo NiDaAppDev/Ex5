@@ -1,7 +1,7 @@
 package ex5.components;
 
+import ex5.IllegalException;
 import ex5.utils.IfWhileUtils;
-import ex5.utils.LineReader;
 
 import java.util.regex.Matcher;
 
@@ -9,32 +9,37 @@ import static ex5.reg_ex_patterns.IfWhileRegExPatterns.SINGLE_CONDITION_PATTERN;
 
 public class IfWhile {
 
-    private final Scope scope;
+    private Scope scope;
     private final Scope parentScope;
 
-    public IfWhile(Scope parentScope, String conditionBlock, String[] codeLines) {
+    public IfWhile(Scope parentScope, String conditionBlock, String[] codeLines) throws IllegalException {
         this.parentScope = parentScope;
         validateConditionBlock(conditionBlock);
-        this.scope = new Scope(parentScope, codeLines);
+        if(codeLines.length > 0) {
+            this.scope = new Scope(parentScope, codeLines);
+        }
     }
 
-    private void validateConditionBlock(String conditionBlock) {
+    private void validateConditionBlock(String conditionBlock) throws IllegalException {
         for(String varName : IfWhileUtils.
-                extractVarNamesInCondition(LineReader.getCurrentGroups()[1])) {
+                extractVarNamesInCondition(conditionBlock)) {
             if(!parentScope.getAllVisibleVariables().containsKey(varName) ||
                     !parentScope.getAllVisibleVariables().get(varName).isInitialized()) {
-                //TODO: throw an "illegal" exception.
+                throw new IllegalException("Used variable doesn't exist or isn't initialized.");
             }
             Matcher conditionalVarM = SINGLE_CONDITION_PATTERN.matcher(
                     parentScope.getAllVisibleVariables().get(varName).getType());
             if(!conditionalVarM.matches()) {
-                //TODO: throw an "illegal" exception.
+                throw new IllegalException("Used variable has incompatible type (non-boolean inside" +
+                        "a condition)");
             }
         }
     }
 
-    public Scope getScope() {
-        return scope;
+    public void parseCodeBlock() throws IllegalException {
+        if(scope != null) {
+            scope.parseCodeBlock();
+        }
     }
 
 }
