@@ -34,6 +34,9 @@ public class Method {
         for (NameVariablePair param : params) {
             String name = param.getName();
             Variable var = param.getVariable();
+            if(parameters.containsKey(name)) {
+                throw new IllegalException("Parameter " + name + " already exists");
+            }
             parameters.put(name, var);
             paramTypes.add(var.getType());
         }

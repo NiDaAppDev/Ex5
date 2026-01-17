@@ -1,4 +1,4 @@
-18:10:00
+18:14:45
 
 school solution#User solution#result#Test name
 
@@ -63,7 +63,7 @@ school solution#User solution#result#Test name
 0		0		passed		/BaraksTests/methods/33.sjava		
 0		0		passed		/BaraksTests/methods/29.sjava		
 1		1		passed		/BaraksTests/methods/37.sjava		
-1		0		failed		/BaraksTests/methods/08.sjava		##################################
+1		1		passed		/BaraksTests/methods/08.sjava		
 0		0		passed		/BaraksTests/methods/27.sjava		
 0		0		passed		/BaraksTests/methods/07.sjava		
 1		1		passed		/BaraksTests/methods/28.sjava		
@@ -634,7 +634,7 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/SchoolTests/test505.sjava		
 1		1		passed		/SchoolTests/test415.sjava		
 1		1		passed		/SchoolTests/test420.sjava		
-1		0		failed		/SchoolTests/test114.sjava		##################################
+1		1		passed		/SchoolTests/test114.sjava		
 0		0		passed		/SchoolTests/test113.sjava		
 1		1		passed		/SchoolTests/test048.sjava		
 1		1		passed		/SchoolTests/test458.sjava		
@@ -667,5 +667,5 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test442.sjava		
 1		1		passed		/SchoolTests/test236.sjava		
 
-passed 414 out of 459 tests.
+passed 416 out of 459 tests.
 
