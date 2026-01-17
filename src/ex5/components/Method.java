@@ -104,7 +104,7 @@ public class Method {
         }
         LineAnalysis lastLine = LineReader.classifyLine(codeLines[lastNonEmptyIndex].trim());
         if(!lastLine.getType().equals(LineReader.LINE_TYPE.RETURN)) {
-            throw new IllegalException("Method doesn't have a return statement.");
+            throw new IllegalException("Method must end with a return statement.");
         }
     }
 
