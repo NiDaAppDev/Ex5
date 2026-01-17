@@ -11,7 +11,7 @@ public class MethodRegExPatterns {
     private static final String METHOD_SIGNATURE =
             SPACES_INITIAL + "void" + SPACE_CHAR + "+(" + METHOD_NAME + ")" +
                     SPACE_CHAR + "*\\(" +
-                    "([^)]*)\\)" + SPACE_CHAR + "*\\{";
+                    "([^)(]*)\\)" + SPACE_CHAR + "*\\{" + SPACES_ENDING;
     /*
      * Relevant to the statement above:
      * Group 1 captures the methods' name

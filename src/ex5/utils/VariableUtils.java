@@ -13,7 +13,6 @@ public class VariableUtils {
 
     public static ArrayList<NameVariablePair> extractDeclaredVariables(
             HashMap<String, Variable> globalVariables,
-
             String[] data)
             throws IllegalException {
         boolean isFinal = data[1] != null;
@@ -26,6 +25,9 @@ public class VariableUtils {
             String name = varInitData[0].trim();
             vars.add(new NameVariablePair(name, new Variable(isFinal, type, false)));
             if (varInitData.length < 2) {
+                if(isFinal) {
+                    throw new IllegalException("Final variable wasn't initialized");
+                }
                 continue;
             }
             String value = varInitData[1];
@@ -58,16 +60,21 @@ public class VariableUtils {
         return valueTypeM.matches() &&
                 (!type.equals(STRING_TYPE) || valueTypeM.group(1) != null) &&
                 (!type.equals(CHAR_TYPE) || valueTypeM.group(2) != null) &&
-                (!type.equals(BOOLEAN_TYPE) || valueTypeM.group(3) != null) &&
-                (!type.equals(INT_TYPE) || valueTypeM.group(4) != null) &&
+                (!type.equals(BOOLEAN_TYPE) ||
+                        (valueTypeM.group(3) != null ||
+                                valueTypeM.group(4) != null ||
+                                valueTypeM.group(5) != null)) &&
+                (!type.equals(INT_TYPE) || (valueTypeM.group(4) != null)) &&
                 (!type.equals(DOUBLE_TYPE) ||
-                        (valueTypeM.group(4) != null || valueTypeM.group(5) != null));
+                        (valueTypeM.group(4) != null ||
+                                valueTypeM.group(5) != null));
     }
 
     private static boolean isVariableAssignmentLegal(HashMap<String, Variable> globalVariables,
                                                      String variableType,
                                                      String assignedVarName) {
-        if (!globalVariables.containsKey(assignedVarName)) {
+        if (!globalVariables.containsKey(assignedVarName) ||
+                !globalVariables.get(assignedVarName).isInitialized()) {
             return false;
         }
         String assignedVarType = globalVariables.get(assignedVarName).getType();

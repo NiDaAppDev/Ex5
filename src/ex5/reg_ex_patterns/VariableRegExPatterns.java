@@ -145,8 +145,8 @@ public class VariableRegExPatterns {
             "(" + STRING_VALUE + ")" + OR +
                     "(" + CHAR_VALUE + ")" + OR +
                     "(" + BOOLEAN_VALUE + ")" + OR +
-                    "(" + DOUBLE_VALUE + ")" + OR +
-                    "(" + INT_VALUE + ")";
+                    "(" + INT_VALUE + ")" + OR +
+                    "(" + DOUBLE_VALUE + ")";
     /*
      * Relevant to the statement above:
      * Group 1 captures if the value is a String
