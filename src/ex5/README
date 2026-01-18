@@ -43,8 +43,15 @@ LineReader - this class reads the file line by line and classifies it as a comme
 Variable - this class represents a variable, it has a name, type, and value
 Method - this class represents a method, it has a name, parameters, and body and self validating methods.
 IfWhile - this class represents an if\while statement, it has a condition and a body and self validating methods.
-Utils - utils varies from class to class, some classes have more self validating methods in the utils.
+Utils - all of the utils are in the form of a static class, meaning all the methods are static and can be called from anywhere.
+this is because instantiating a class like this is meaningless,
+as we only use the methods on information from different classes, and we never require more than one of each util.
+the utils vary from class to class, some classes have more self validating methods in the utils.
 some have extract methods to get the variable\method name\type\body\condition to be used in other classes for validation.
-reg_ex_patterns - this class holds all the regex patterns we use in the code.
+but we only ever use the methods.
+reg_ex_patterns - this holds all the regex patterns we use in the code.
+they are all public to be used in the code, as they are static, and we never change them.
+instead of defining the same pattern in different places, we reuse the same constant patterns.
 Main - specifically SJava, this is the main class, it reads the file and calls the Scope class to validate it.
 the main (not the Sjava class) is also where we keep the type 2 exceptions.
+the IllegalException is thrown throughout the entire code, so it is not kept in a single module or class.
