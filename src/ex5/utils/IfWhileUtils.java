@@ -10,8 +10,16 @@ import static ex5.reg_ex_patterns.VariableRegExPatterns.VALID_VARIABLE_CALL;
 
 import static ex5.reg_ex_patterns.IfWhileRegExPatterns.CONDITION_BLOCK_PATTERN;
 
+/**
+ * Util class for if\while blicks
+ */
 public class IfWhileUtils {
 
+    /**
+     * @param conditionBlock is the given condition of an if\while.
+     * @return variable names found in the condition.
+     * @throws IllegalException if one of the condition elements is illegal.
+     */
     public static ArrayList<String> extractVarNamesInCondition(String conditionBlock)
             throws IllegalException {
         ArrayList<String> varNames = new ArrayList<>();

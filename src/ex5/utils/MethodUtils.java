@@ -12,8 +12,17 @@ import java.util.regex.Matcher;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
+/**
+ * Utils for validating methods.
+ */
 public class MethodUtils {
 
+
+    /**
+     * @param data is a String that holds all parameters in a method signature.
+     * @return a list of the method's parameters.
+     * @throws IllegalException is thrown if a method's signature is illegal.
+     */
     public static List<NameVariablePair> extractMethodParameters(String data) throws IllegalException {
         List<NameVariablePair> pairs = new ArrayList<>();
         if (data == null || data.trim().isEmpty()) {
@@ -45,6 +54,14 @@ public class MethodUtils {
         return pairs;
     }
 
+
+    /**
+     * Extract args from call.
+     * @param data is a String that holds the arguments.
+     * @param visibleVars are all the variables visible to the call.
+     * @return the arguments the method was called with.
+     * @throws IllegalException is thrown if the call is illegal.
+     */
     public static List<Variable> getArgsFromCall(String data,
                                                  HashMap<String, Variable> visibleVars)
             throws IllegalException {
@@ -83,14 +100,5 @@ public class MethodUtils {
         if (matcher.group(4) != null) return INT_TYPE;
         if (matcher.group(5) != null) return DOUBLE_TYPE;
         return null;
-    }
-
-    public static String[] extractCallParams(String data) {
-        if (data == null) return new String[0];
-        String[] params = data.split(",");
-        for (int i = 0; i < params.length; i++) {
-            params[i] = params[i].trim();
-        }
-        return params;
     }
 }

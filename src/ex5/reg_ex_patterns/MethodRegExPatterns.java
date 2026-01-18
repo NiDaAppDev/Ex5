@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
+/**
+ * A class that holds regexes relevant to methods.
+ */
 public class MethodRegExPatterns {
 
     private static final String METHOD_NAME = "\\b[a-zA-Z]\\w*\\b";
@@ -36,15 +39,21 @@ public class MethodRegExPatterns {
     private static final String RETURN_STATEMENT =
             SPACES_INITIAL + "return" + ENDING_SEMICOLON;
 
+    /**
+     * A pattern to validate a method definition.
+     */
     public static final Pattern METHOD_PATTERN =
             Pattern.compile(METHOD_SIGNATURE);
 
-    public static final Pattern PARAMETERS_PATTERN =
-            Pattern.compile(PARAMETERS);
-
+    /**
+     * A pattern to validate a method call.
+     */
     public static final Pattern METHOD_CALL_PATTERN =
             Pattern.compile(METHOD_CALL);
 
+    /**
+     * A pattern to validate a return line.
+     */
     public static final Pattern RETURN_STATEMENT_PATTERN =
             Pattern.compile(RETURN_STATEMENT);
 }

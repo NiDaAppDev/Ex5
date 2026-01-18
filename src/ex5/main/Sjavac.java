@@ -9,9 +9,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+/**
+ * The main class of the project.
+ */
 public class Sjavac {
 
 
+    /**
+     * The main method of this project.
+     * @param args are the inputted args.
+     */
     public static void main(String[] args) {
         try {
             if (args.length != 1) {

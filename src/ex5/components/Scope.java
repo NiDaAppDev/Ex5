@@ -6,6 +6,9 @@ import java.util.HashMap;
 import ex5.IllegalException;
 import ex5.utils.*;
 
+/**
+ * An object that resembles a scope.
+ */
 public class Scope {
 
     private final Scope parent;
@@ -15,6 +18,12 @@ public class Scope {
     private HashMap<String, Variable> allVisibleVariables;
     private HashMap<String, Method> methods;
 
+    /**
+     * Constructor.
+     * @param parent is the scope parent of this scope.
+     * @param codeBlock is the code block of this scope.
+     * @param variables are the variables of this scope.
+     */
     public Scope(Scope parent,
                  String[] codeBlock,
                  HashMap<String, Variable> variables) {
@@ -25,6 +34,11 @@ public class Scope {
         methods = new HashMap<>();
     }
 
+    /**
+     * Constructor.
+     * @param parent is the scope parent of this scope.
+     * @param codeBlock is the code block of this code.
+     */
     public Scope(Scope parent,
                  String[] codeBlock) {
         this.parent = parent;
@@ -34,6 +48,10 @@ public class Scope {
         methods = new HashMap<>();
     }
 
+    /**
+     * Constructor.
+     * @param codeBlock is the code block of this scope.
+     */
     public Scope(String[] codeBlock) {
         this.parent = null;
         this.codeBlock = codeBlock;
@@ -42,19 +60,25 @@ public class Scope {
         methods = new HashMap<>();
     }
 
+    /**
+     * @param variableName is the name of the variable to add.
+     * @param variable is the variable to add.
+     */
     public void addVariable(String variableName, Variable variable) {
         variables.put(variableName, variable);
     }
 
-    public HashMap<String, Variable> getVariables() {
-        return variables;
-    }
-
+    /**
+     * @return the methods of this scope.
+     */
     public HashMap<String, Method> getMethods() {
         if(parent==null) return methods;
         return parent.getMethods();
     }
 
+    /**
+     * @return all variables that are visible in this scope.
+     */
     public HashMap<String, Variable> getAllVisibleVariables() {
         if (parent == null) return variables;
         HashMap<String, Variable> allVariables = parent.getAllVisibleVariables();
@@ -62,6 +86,9 @@ public class Scope {
         return allVariables;
     }
 
+    /**
+     * @throws IllegalException if the code block of this scope is illegal.
+     */
     public void parseCodeBlock() throws IllegalException {
         for (int i = 0; i < codeBlock.length; i++) {
             LineAnalysis currentLineAnalysis = LineReader.classifyLine(codeBlock[i]);

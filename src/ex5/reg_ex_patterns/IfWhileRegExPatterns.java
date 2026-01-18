@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
+/**
+ * This class holds regexes relevant to if\while blocks.
+ */
 public class IfWhileRegExPatterns {
     private static final String IF_WHILE_DECLARATION_LINE =
             SPACES_INITIAL //Line can start with spaces

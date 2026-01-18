@@ -7,20 +7,53 @@ import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 import static ex5.reg_ex_patterns.IfWhileRegExPatterns.*;
 import static ex5.reg_ex_patterns.MethodRegExPatterns.*;
 
-
+/**
+ * A static class, helper for analyzing code lines.
+ */
 public class LineReader {
 
+    /**
+     * Line types.
+     */
     public enum LINE_TYPE {
+        /**
+         * comment, spaces or empty line.
+         */
         IGNORE,
+        /**
+         * variable definition
+         */
         VAR_DEF,
+        /**
+         * variable assignment
+         */
         VAR_ASSIGN,
+        /**
+         * if\while block starter
+         */
         IF_WHILE,
+        /**
+         * method signature
+         */
         METHOD_DEF,
+        /**
+         * method call
+         */
         METHOD_CALL,
+        /**
+         * return
+         */
         RETURN,
+        /**
+         * not recognized, hence illegal
+         */
         ILLEGAL
     }
 
+    /**
+     * @param line is the line to classify.
+     * @return the data of the analyzed line.
+     */
     public static LineAnalysis classifyLine(String line){
         String[] current_groups = new String[0];
         Matcher ignoreM = IGNORE_LINE_PATTERN.matcher(line);

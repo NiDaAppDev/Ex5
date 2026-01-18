@@ -5,6 +5,9 @@ import java.util.regex.Pattern;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.OR;
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.SPACES_INITIAL;
 
+/**
+ * A class that holds regexes relevant to comments or spaces lines.
+ */
 public class IgnoreLineRegExPatterns {
 
     private static final String EMPTY_LINE = SPACES_INITIAL + "$";

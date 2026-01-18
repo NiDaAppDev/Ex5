@@ -4,6 +4,9 @@ import java.util.regex.Pattern;
 
 import static ex5.reg_ex_patterns.GeneralRegExPatterns.*;
 
+/**
+ * A class that holds regexes relevant to variables.
+ */
 public class VariableRegExPatterns {
 
     /*Keyword Constants*/

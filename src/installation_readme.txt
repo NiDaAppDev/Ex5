@@ -6,8 +6,8 @@ Created by Evyatar (script) and Barak (Tests).
 As always, feel free to improve the tester and to share it. 
 
 Installation:
-1. Unzip everything to ex6/src (ex5.main.Tester_ex6_oop, README, tester_files) (same level as oop folder).
-2. Open  ex5.main.Tester_ex6_oop with intelliJ.
+1. Unzip everything to ex6/src (tester_files.Tester_ex6_oop, README, tester_files) (same level as oop folder).
+2. Open  tester_files.Tester_ex6_oop with intelliJ.
 3. Import junit.
 4. Run the tests.
 

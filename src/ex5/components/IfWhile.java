@@ -7,11 +7,21 @@ import java.util.regex.Matcher;
 
 import static ex5.reg_ex_patterns.VariableRegExPatterns.CONDITIONAL_VARIABLE_TYPE_PATTERN;
 
+/**
+ * An object that resembles an if\while block.
+ */
 public class IfWhile {
 
     private Scope scope;
     private final Scope parentScope;
 
+    /**
+     * Constructor
+     * @param parentScope is the scope containing this block.
+     * @param conditionBlock is the condition block of this if\while.
+     * @param codeLines are the inner lines of code of this codeBlock.
+     * @throws IllegalException is an exception thrown if the condition is not legal.
+     */
     public IfWhile(Scope parentScope, String conditionBlock, String[] codeLines) throws IllegalException {
         this.parentScope = parentScope;
         validateConditionBlock(conditionBlock);
@@ -36,6 +46,9 @@ public class IfWhile {
         }
     }
 
+    /**
+     * @throws IllegalException is an exception thrown if the inner code lines are illegal.
+     */
     public void parseCodeBlock() throws IllegalException {
         if(scope != null) {
             scope.parseCodeBlock();

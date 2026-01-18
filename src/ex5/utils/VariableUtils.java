@@ -9,8 +9,17 @@ import java.util.regex.Matcher;
 
 import static ex5.reg_ex_patterns.VariableRegExPatterns.*;
 
+/**
+ * Utils for variables.
+ */
 public class VariableUtils {
 
+    /**
+     * @param globalVariables are the variables that are visible on the declaration stage.
+     * @param data is an array of the declaration data collected.
+     * @return a list of the declared variables.
+     * @throws IllegalException is thrown if one of the variables was declared wrongly.
+     */
     public static ArrayList<NameVariablePair> extractDeclaredVariables(
             HashMap<String, Variable> globalVariables,
             String[] data)
@@ -37,6 +46,11 @@ public class VariableUtils {
         return vars;
     }
 
+    /**
+     * @param assignmentStatement is the statement of a variable assignment.
+     * @return the variable assignment data - the assigned-to variable's name, and the value that
+     * was assigned to it.
+     */
     public static VariableAssignmentPair extractVariableAssignment(String assignmentStatement) {
         String[] varInitData = assignmentStatement.trim().split("=");
         String name = varInitData[0].trim();
@@ -44,6 +58,12 @@ public class VariableUtils {
         return new VariableAssignmentPair(name, value);
     }
 
+    /**
+     * @param globalVariables are the variables that are visible at the assignment's stage.
+     * @param variable is the variable we try to assign to.
+     * @param value is the value assigned to the variable.
+     * @throws IllegalException is thrown if the assignment is illegal.
+     */
     public static void assignValueToVariable(HashMap<String, Variable> globalVariables,
                                              Variable variable,
                                              String value)

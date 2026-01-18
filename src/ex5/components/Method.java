@@ -13,18 +13,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * An object that resembles a method.
+ */
 public class Method {
     private Scope scope;
-    private Scope parentScope;
     private final String methodName;
     private final HashMap<String, Variable> parameters;
     private final List<String> paramTypes;
-    private String[] methodBody;
 
+    /**
+     * Constructor.
+     * @param groups are the data groups of the found method signature.
+     * @param codeLines are the lines of code of the method.
+     * @param parent is the parent scope that holds this method.
+     * @throws IllegalException is thrown when an illegal statement is
+     * found in the method's signature.
+     */
     public Method(String[] groups, String[] codeLines, Scope parent) throws IllegalException {
         this.methodName = groups[1];
-        this.methodBody = codeLines;
         this.parameters = new HashMap<>();
         this.paramTypes = new ArrayList<>();
 
@@ -45,12 +52,16 @@ public class Method {
                 codeLines,
                 parameters);
 
-        this.parentScope = parent;
-
         validateName();
         validateReturn(codeLines);
     }
 
+    /**
+     * @param paramString are the input parameters of the call in a form of one String.
+     * @param additionalVisibleVariables are variables that are visible to the call,
+     *                                   but not to the method itself.
+     * @throws IllegalException is thrown when the call is illegal.
+     */
     public void call(String paramString,
                      HashMap<String, Variable> additionalVisibleVariables)
             throws IllegalException {
@@ -75,6 +86,10 @@ public class Method {
         }
     }
 
+    /**
+     * Getter.
+     * @return the method's name.
+     */
     public String getMethodName() {
         return methodName;
     }
@@ -111,6 +126,10 @@ public class Method {
         }
     }
 
+    /**
+     * Recursive method to parse the method's inner scope's code.
+     * @throws IllegalException is thrown if the inner code is illegal.
+     */
     public void parseCodeBlock() throws IllegalException {
         if(scope != null) {
             scope.parseCodeBlock();
