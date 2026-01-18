@@ -22,6 +22,10 @@ public class MethodUtils {
 
         String[] paramNames = data.split(",");
         for (String paramGroup : paramNames) {
+//            if(paramGroup.trim().isEmpty()) {
+//                throw new IllegalException("Redundant comma or invalid parameter in a method" +
+//                        " parameters list.");
+//            }
             paramGroup = paramGroup.trim();
             if (paramGroup.isEmpty()) continue;
             boolean isParamFinal = false;

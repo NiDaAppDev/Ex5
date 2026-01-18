@@ -1,4 +1,4 @@
-18:14:45
+19:29:00
 
 school solution#User solution#result#Test name
 
@@ -70,9 +70,9 @@ school solution#User solution#result#Test name
 0		0		passed		/BaraksTests/methods/18.sjava		
 1		1		passed		/BaraksTests/methods/13.sjava		
 0		0		passed		/BaraksTests/methods/32.sjava		
-1		0		failed		/BaraksTests/methods/11.sjava		##################################
+1		1		passed		/BaraksTests/methods/11.sjava		
 1		1		passed		/BaraksTests/methods/17.sjava		
-1		0		failed		/BaraksTests/methods/31.sjava		##################################
+1		1		passed		/BaraksTests/methods/31.sjava		
 1		1		passed		/BaraksTests/methods/23.sjava		
 1		0		failed		/BaraksTests/methods/16.sjava		##################################
 1		1		passed		/BaraksTests/methods/10.sjava		
@@ -98,138 +98,15 @@ school solution#User solution#result#Test name
 1		1		passed		/BaraksTests/structure/13.sjava		
 1		1		passed		/BaraksTests/structure/11.sjava		
 1		1		passed		/BaraksTests/structure/17.sjava		
-
-while testing /BaraksTests/structure/23.sjava, Your program printed something that is not '1' or '0' or '2'.
-The prints were:
-
-java.lang.IllegalArgumentException: 1 > 0
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3782)
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3742)
-	at ex5.utils.SubScopeExtractor.getSubScopeCodeBlock(SubScopeExtractor.java:35)
-	at ex5.components.Scope.extractSubScopeCodeBlock(Scope.java:173)
-	at ex5.components.Scope.parseCodeBlock(Scope.java:118)
-	at ex5.main.Sjavac.main(Sjavac.java:28)
-	at ex5.main.Tester_ex6_oop.runTestWithOnUser(Tester_ex6_oop.java:304)
-	at ex5.main.Tester_ex6_oop.doOneTest(Tester_ex6_oop.java:209)
-	at ex5.main.Tester_ex6_oop.runAllTests(Tester_ex6_oop.java:102)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)
-
+1		1		passed		/BaraksTests/structure/23.sjava		
 1		1		passed		/BaraksTests/structure/16.sjava		
 1		1		passed		/BaraksTests/structure/10.sjava		
 0		0		passed		/BaraksTests/structure/04.sjava		
 1		1		passed		/BaraksTests/structure/20.sjava		
 1		1		passed		/BaraksTests/structure/02.sjava		
-
-while testing /BaraksTests/structure/19.sjava, Your program printed something that is not '1' or '0' or '2'.
-The prints were:
-
-java.lang.IllegalArgumentException: 1 > 0
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3782)
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3742)
-	at ex5.utils.SubScopeExtractor.getSubScopeCodeBlock(SubScopeExtractor.java:35)
-	at ex5.components.Scope.extractSubScopeCodeBlock(Scope.java:173)
-	at ex5.components.Scope.parseCodeBlock(Scope.java:118)
-	at ex5.main.Sjavac.main(Sjavac.java:28)
-	at ex5.main.Tester_ex6_oop.runTestWithOnUser(Tester_ex6_oop.java:304)
-	at ex5.main.Tester_ex6_oop.doOneTest(Tester_ex6_oop.java:209)
-	at ex5.main.Tester_ex6_oop.runAllTests(Tester_ex6_oop.java:102)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)
-
+1		1		passed		/BaraksTests/structure/19.sjava		
 0		0		passed		/BaraksTests/structure/01.sjava		
-
-while testing /BaraksTests/structure/22.sjava, Your program printed something that is not '1' or '0' or '2'.
-The prints were:
-
-java.lang.IllegalArgumentException: 1 > 0
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3782)
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3742)
-	at ex5.utils.SubScopeExtractor.getSubScopeCodeBlock(SubScopeExtractor.java:35)
-	at ex5.components.Scope.extractSubScopeCodeBlock(Scope.java:173)
-	at ex5.components.Scope.parseCodeBlock(Scope.java:118)
-	at ex5.main.Sjavac.main(Sjavac.java:28)
-	at ex5.main.Tester_ex6_oop.runTestWithOnUser(Tester_ex6_oop.java:304)
-	at ex5.main.Tester_ex6_oop.doOneTest(Tester_ex6_oop.java:209)
-	at ex5.main.Tester_ex6_oop.runAllTests(Tester_ex6_oop.java:102)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)
-
+1		1		passed		/BaraksTests/structure/22.sjava		
 1		1		passed		/BaraksTests/structure/09.sjava		
 1		1		passed		/BaraksTests/structure/25.sjava		
 1		1		passed		/BaraksTests/structure/24.sjava		
@@ -252,12 +129,12 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/BaraksTests/return/06.sjava		
 0		0		passed		/BaraksTests/variables/76.sjava		
 1		1		passed		/BaraksTests/variables/12.sjava		
-1		0		failed		/BaraksTests/variables/03.sjava		##################################
+1		1		passed		/BaraksTests/variables/03.sjava		
 1		1		passed		/BaraksTests/variables/34.sjava		
-0		1		failed		/BaraksTests/variables/55.sjava		##################################
+0		0		passed		/BaraksTests/variables/55.sjava		
 1		1		passed		/BaraksTests/variables/73.sjava		
 1		1		passed		/BaraksTests/variables/46.sjava		
-1		0		failed		/BaraksTests/variables/85.sjava		##################################
+1		1		passed		/BaraksTests/variables/85.sjava		
 1		1		passed		/BaraksTests/variables/26.sjava		
 0		0		passed		/BaraksTests/variables/21.sjava		
 1		1		passed		/BaraksTests/variables/94.sjava		
@@ -268,16 +145,16 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/BaraksTests/variables/69.sjava		
 1		1		passed		/BaraksTests/variables/08.sjava		
 0		0		passed		/BaraksTests/variables/84.sjava		
-1		0		failed		/BaraksTests/variables/71.sjava		##################################
+1		1		passed		/BaraksTests/variables/71.sjava		
 0		0		passed		/BaraksTests/variables/27.sjava		
 1		1		passed		/BaraksTests/variables/59.sjava		
 1		1		passed		/BaraksTests/variables/07.sjava		
 1		1		passed		/BaraksTests/variables/65.sjava		
 1		1		passed		/BaraksTests/variables/58.sjava		
 0		0		passed		/BaraksTests/variables/54.sjava		
-1		0		failed		/BaraksTests/variables/28.sjava		##################################
+1		1		passed		/BaraksTests/variables/28.sjava		
 0		0		passed		/BaraksTests/variables/75.sjava		
-1		0		failed		/BaraksTests/variables/87.sjava		##################################
+1		1		passed		/BaraksTests/variables/87.sjava		
 1		1		passed		/BaraksTests/variables/18.sjava		
 1		1		passed		/BaraksTests/variables/92.sjava		
 1		1		passed		/BaraksTests/variables/15.sjava		
@@ -295,7 +172,7 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/BaraksTests/variables/17.sjava		
 1		1		passed		/BaraksTests/variables/72.sjava		
 1		1		passed		/BaraksTests/variables/31.sjava		
-0		1		failed		/BaraksTests/variables/23.sjava		##################################
+0		0		passed		/BaraksTests/variables/23.sjava		
 0		0		passed		/BaraksTests/variables/16.sjava		
 1		1		passed		/BaraksTests/variables/10.sjava		
 0		0		passed		/BaraksTests/variables/35.sjava		
@@ -325,11 +202,11 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/BaraksTests/variables/67.sjava		
 0		0		passed		/BaraksTests/variables/02.sjava		
 1		1		passed		/BaraksTests/variables/90.sjava		
-1		0		failed		/BaraksTests/variables/79.sjava		##################################
+1		1		passed		/BaraksTests/variables/79.sjava		
 0		0		passed		/BaraksTests/variables/19.sjava		
 0		0		passed		/BaraksTests/variables/01.sjava		
-1		0		failed		/BaraksTests/variables/81.sjava		##################################
-0		1		failed		/BaraksTests/variables/22.sjava		##################################
+1		1		passed		/BaraksTests/variables/81.sjava		
+0		0		passed		/BaraksTests/variables/22.sjava		
 1		1		passed		/BaraksTests/variables/09.sjava		
 0		0		passed		/BaraksTests/variables/49.sjava		
 1		1		passed		/BaraksTests/variables/57.sjava		
@@ -365,7 +242,7 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test263.sjava		
 1		1		passed		/SchoolTests/test217.sjava		
 1		1		passed		/SchoolTests/test429.sjava		
-1		0		failed		/SchoolTests/test018.sjava		##################################
+1		1		passed		/SchoolTests/test018.sjava		
 1		1		passed		/SchoolTests/test047.sjava		
 0		0		passed		/SchoolTests/test110.sjava		
 0		0		passed		/SchoolTests/test222.sjava		
@@ -377,10 +254,10 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test262.sjava		
 0		0		passed		/SchoolTests/test233.sjava		
 0		0		passed		/SchoolTests/test202.sjava		
-1		0		failed		/SchoolTests/test208.sjava		##################################
+1		1		passed		/SchoolTests/test208.sjava		
 1		1		passed		/SchoolTests/test328.sjava		
 0		0		passed		/SchoolTests/test028.sjava		
-1		0		failed		/SchoolTests/test005.sjava		##################################
+1		1		passed		/SchoolTests/test005.sjava		
 1		1		passed		/SchoolTests/test274.sjava		
 1		1		passed		/SchoolTests/test103.sjava		
 1		1		passed		/SchoolTests/test413.sjava		
@@ -388,70 +265,29 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/SchoolTests/test203.sjava		
 0		0		passed		/SchoolTests/test106.sjava		
 1		1		passed		/SchoolTests/test254.sjava		
-1		0		failed		/SchoolTests/test026.sjava		##################################
+1		1		passed		/SchoolTests/test026.sjava		
 0		0		passed		/SchoolTests/test242.sjava		
 1		1		passed		/SchoolTests/test457.sjava		
 0		0		passed		/SchoolTests/test235.sjava		
 0		0		passed		/SchoolTests/test411.sjava		
-1		0		failed		/SchoolTests/test249.sjava		##################################
+1		1		passed		/SchoolTests/test249.sjava		
 1		1		passed		/SchoolTests/test245.sjava		
 0		0		passed		/SchoolTests/test433.sjava		
 0		0		passed		/SchoolTests/test410.sjava		
 1		1		passed		/SchoolTests/test460.sjava		
 0		0		passed		/SchoolTests/test112.sjava		
-1		0		failed		/SchoolTests/test455.sjava		##################################
+1		1		passed		/SchoolTests/test455.sjava		
 1		1		passed		/SchoolTests/test116.sjava		
 0		0		passed		/SchoolTests/test234.sjava		
 1		1		passed		/SchoolTests/test225.sjava		
-
-while testing /SchoolTests/test476.sjava, Your program printed something that is not '1' or '0' or '2'.
-The prints were:
-
-java.lang.IllegalArgumentException: 1 > 0
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3782)
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3742)
-	at ex5.utils.SubScopeExtractor.getSubScopeCodeBlock(SubScopeExtractor.java:35)
-	at ex5.components.Scope.extractSubScopeCodeBlock(Scope.java:173)
-	at ex5.components.Scope.parseCodeBlock(Scope.java:118)
-	at ex5.main.Sjavac.main(Sjavac.java:28)
-	at ex5.main.Tester_ex6_oop.runTestWithOnUser(Tester_ex6_oop.java:304)
-	at ex5.main.Tester_ex6_oop.doOneTest(Tester_ex6_oop.java:209)
-	at ex5.main.Tester_ex6_oop.runAllTests(Tester_ex6_oop.java:102)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)
-
+1		1		passed		/SchoolTests/test476.sjava		
 1		1		passed		/SchoolTests/test261.sjava		
 0		0		passed		/SchoolTests/test438.sjava		
 0		0		passed		/SchoolTests/test212.sjava		
 0		0		passed		/SchoolTests/test501.sjava		
 0		0		passed		/SchoolTests/test241.sjava		
 1		1		passed		/SchoolTests/test468.sjava		
-1		0		failed		/SchoolTests/test205.sjava		##################################
+1		1		passed		/SchoolTests/test205.sjava		
 1		1		passed		/SchoolTests/test467.sjava		
 1		1		passed		/SchoolTests/test244.sjava		
 0		0		passed		/SchoolTests/test021.sjava		
@@ -462,7 +298,7 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test416.sjava		
 0		0		passed		/SchoolTests/test313.sjava		
 0		0		passed		/SchoolTests/test473.sjava		
-1		0		failed		/SchoolTests/test218.sjava		##################################
+1		1		passed		/SchoolTests/test218.sjava		
 0		0		passed		/SchoolTests/test327.sjava		
 0		0		passed		/SchoolTests/test301.sjava		
 0		0		passed		/SchoolTests/test461.sjava		
@@ -478,7 +314,7 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/SchoolTests/test004.sjava		
 0		0		passed		/SchoolTests/test465.sjava		
 0		0		passed		/SchoolTests/test111.sjava		
-1		0		failed		/SchoolTests/test454.sjava		##################################
+1		1		passed		/SchoolTests/test454.sjava		
 0		0		passed		/SchoolTests/test042.sjava		
 0		0		passed		/SchoolTests/test322.sjava		
 1		1		passed		/SchoolTests/test402.sjava		
@@ -508,8 +344,8 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test044.sjava		
 1		1		passed		/SchoolTests/test306.sjava		
 1		1		passed		/SchoolTests/test207.sjava		
-1		0		failed		/SchoolTests/test008.sjava		##################################
-0		1		failed		/SchoolTests/test215.sjava		##################################
+1		1		passed		/SchoolTests/test008.sjava		
+0		0		passed		/SchoolTests/test215.sjava		
 0		0		passed		/SchoolTests/test051.sjava		
 1		1		passed		/SchoolTests/test504.sjava		
 1		1		passed		/SchoolTests/test115.sjava		
@@ -524,17 +360,17 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/SchoolTests/test405.sjava		
 0		0		passed		/SchoolTests/test302.sjava		
 1		1		passed		/SchoolTests/test270.sjava		
-0		1		failed		/SchoolTests/test014.sjava		##################################
+0		0		passed		/SchoolTests/test014.sjava		
 0		0		passed		/SchoolTests/test231.sjava		
-1		0		failed		/SchoolTests/test238.sjava		##################################
+1		1		passed		/SchoolTests/test238.sjava		
 1		1		passed		/SchoolTests/test307.sjava		
-0		1		failed		/SchoolTests/test214.sjava		##################################
-1		0		failed		/SchoolTests/test252.sjava		##################################
+0		0		passed		/SchoolTests/test214.sjava		
+1		1		passed		/SchoolTests/test252.sjava		
 1		1		passed		/SchoolTests/test459.sjava		
-1		0		failed		/SchoolTests/test226.sjava		##################################
+1		1		passed		/SchoolTests/test226.sjava		
 0		0		passed		/SchoolTests/test266.sjava		
 1		1		passed		/SchoolTests/test470.sjava		
-1		0		failed		/SchoolTests/test054.sjava		##################################
+1		1		passed		/SchoolTests/test054.sjava		
 1		1		passed		/SchoolTests/test441.sjava		
 0		0		passed		/SchoolTests/test404.sjava		
 1		1		passed		/SchoolTests/test017.sjava		
@@ -545,13 +381,13 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test045.sjava		
 1		1		passed		/SchoolTests/test216.sjava		
 1		1		passed		/SchoolTests/test053.sjava		
-1		0		failed		/SchoolTests/test038.sjava		##################################
+1		1		passed		/SchoolTests/test038.sjava		
 0		0		passed		/SchoolTests/test428.sjava		
-1		0		failed		/SchoolTests/test265.sjava		##################################
+1		1		passed		/SchoolTests/test265.sjava		
 0		0		passed		/SchoolTests/test312.sjava		
 0		0		passed		/SchoolTests/test324.sjava		
-1		0		failed		/SchoolTests/test250.sjava		##################################
-1		0		failed		/SchoolTests/test055.sjava		##################################
+1		1		passed		/SchoolTests/test250.sjava		
+1		1		passed		/SchoolTests/test055.sjava		
 0		0		passed		/SchoolTests/test303.sjava		
 1		1		passed		/SchoolTests/test417.sjava		
 1		1		passed		/SchoolTests/test023.sjava		
@@ -581,48 +417,7 @@ java.lang.IllegalArgumentException: 1 > 0
 0		0		passed		/SchoolTests/test211.sjava		
 1		1		passed		/SchoolTests/test316.sjava		
 1		1		passed		/SchoolTests/test408.sjava		
-
-while testing /SchoolTests/test475.sjava, Your program printed something that is not '1' or '0' or '2'.
-The prints were:
-
-java.lang.IllegalArgumentException: 1 > 0
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3782)
-	at java.base/java.util.Arrays.copyOfRange(Arrays.java:3742)
-	at ex5.utils.SubScopeExtractor.getSubScopeCodeBlock(SubScopeExtractor.java:35)
-	at ex5.components.Scope.extractSubScopeCodeBlock(Scope.java:173)
-	at ex5.components.Scope.parseCodeBlock(Scope.java:118)
-	at ex5.main.Sjavac.main(Sjavac.java:28)
-	at ex5.main.Tester_ex6_oop.runTestWithOnUser(Tester_ex6_oop.java:304)
-	at ex5.main.Tester_ex6_oop.doOneTest(Tester_ex6_oop.java:209)
-	at ex5.main.Tester_ex6_oop.runAllTests(Tester_ex6_oop.java:102)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
-	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
-	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
-	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
-	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:237)
-	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:58)
-
+1		1		passed		/SchoolTests/test475.sjava		
 1		1		passed		/SchoolTests/test436.sjava		
 1		1		passed		/SchoolTests/test503.sjava		
 0		0		passed		/SchoolTests/test305.sjava		
@@ -646,20 +441,20 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test272.sjava		
 0		0		passed		/SchoolTests/test437.sjava		
 1		1		passed		/SchoolTests/test248.sjava		
-1		0		failed		/SchoolTests/test257.sjava		##################################
+1		1		passed		/SchoolTests/test257.sjava		
 0		0		passed		/SchoolTests/test232.sjava		
 1		1		passed		/SchoolTests/test431.sjava		
 0		0		passed		/SchoolTests/test472.sjava		
-0		1		failed		/SchoolTests/test015.sjava		##################################
+0		0		passed		/SchoolTests/test015.sjava		
 1		1		passed		/SchoolTests/test309.sjava		
 1		1		passed		/SchoolTests/test407.sjava		
 1		1		passed		/SchoolTests/test247.sjava		
-0		1		failed		/SchoolTests/test418.sjava		##################################
+0		0		passed		/SchoolTests/test418.sjava		
 0		0		passed		/SchoolTests/test432.sjava		
 0		0		passed		/SchoolTests/test311.sjava		
 1		1		passed		/SchoolTests/test452.sjava		
 1		1		passed		/SchoolTests/test421.sjava		
-1		0		failed		/SchoolTests/test049.sjava		##################################
+1		1		passed		/SchoolTests/test049.sjava		
 0		0		passed		/SchoolTests/test425.sjava		
 0		0		passed		/SchoolTests/test255.sjava		
 0		0		passed		/SchoolTests/test027.sjava		
@@ -667,5 +462,5 @@ java.lang.IllegalArgumentException: 1 > 0
 1		1		passed		/SchoolTests/test442.sjava		
 1		1		passed		/SchoolTests/test236.sjava		
 
-passed 416 out of 459 tests.
+passed 458 out of 459 tests.
 

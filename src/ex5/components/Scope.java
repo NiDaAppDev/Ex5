@@ -14,7 +14,6 @@ public class Scope {
     private HashMap<String, Variable> variables;
     private HashMap<String, Variable> allVisibleVariables;
     private HashMap<String, Method> methods;
-    private ArrayList<IfWhile> ifWhileStatements;
 
     public Scope(Scope parent,
                  String[] codeBlock,
@@ -24,7 +23,6 @@ public class Scope {
         this.variables = new  HashMap<>(variables);
         allVisibleVariables = getAllVisibleVariables();
         methods = new HashMap<>();
-        ifWhileStatements = new ArrayList<>();
     }
 
     public Scope(Scope parent,
@@ -34,7 +32,6 @@ public class Scope {
         this.variables = new  HashMap<>();
         allVisibleVariables = getAllVisibleVariables();
         methods = new HashMap<>();
-        ifWhileStatements = new ArrayList<>();
     }
 
     public Scope(String[] codeBlock) {
@@ -43,7 +40,6 @@ public class Scope {
         this.variables = new HashMap<>();
         allVisibleVariables = getAllVisibleVariables();
         methods = new HashMap<>();
-        ifWhileStatements = new ArrayList<>();
     }
 
     public void addVariable(String variableName, Variable variable) {
@@ -88,9 +84,10 @@ public class Scope {
                 case VAR_ASSIGN -> {
                     VariableAssignmentPair varAssignPair =
                             VariableUtils.extractVariableAssignment(currentCapturedGroups[1]);
-                    if (!allVisibleVariables.containsKey(varAssignPair.getName())) {
+                    if (!allVisibleVariables.containsKey(varAssignPair.getName()) ||
+                    allVisibleVariables.get(varAssignPair.getName()).isFinal()) {
                         throw new IllegalException("Trying to assign to a variable that doesn't exist" +
-                                " in this context.");
+                                " in this context or a final variable.");
                     }
                     VariableUtils.assignValueToVariable(
                             getAllVisibleVariables(),
@@ -102,12 +99,11 @@ public class Scope {
                         throw new IllegalException("Trying to open an if/while block in the global scope.");
                     }
                     String[] body = extractSubScopeCodeBlock(i);
-                    ifWhileStatements.add(
-                            new IfWhile(
-                                    this,
-                                    currentCapturedGroups[1],
-                                    body)
-                    );
+                    IfWhile currentIfWhile = new IfWhile(
+                            this,
+                            currentCapturedGroups[1],
+                            body);
+                    currentIfWhile.parseCodeBlock();
                     i += body.length + 1;
                 }
                 case METHOD_DEF -> {
@@ -150,23 +146,24 @@ public class Scope {
     }
 
     private void parseSubScopesCodeBlocks() throws IllegalException {
-        for (IfWhile ifWhile : ifWhileStatements) {
-            ifWhile.parseCodeBlock();
-        }
         for(Method method : methods.values()) {
             method.parseCodeBlock();
         }
     }
 
     private String[] extractSubScopeCodeBlock(int currentIndex) throws IllegalException{
+        if(currentIndex + 1 >= codeBlock.length) {
+            return new String[0];
+        }
         String[] remainingCode = SubScopeExtractor.getSubScopeCodeBlock(
                 codeBlock,
                 currentIndex + 1,
                 codeBlock.length);
-        int blockClosingBracketIndex = currentIndex + SubScopeExtractor.getBlockEndIndex(remainingCode) + 1;
+        int blockClosingBracketIndex = SubScopeExtractor.getBlockEndIndex(remainingCode);
         if (blockClosingBracketIndex == -1) {
             throw new IllegalException("Couldn't find block closing bracket.");
         }
+        blockClosingBracketIndex += currentIndex + 1;
         if(blockClosingBracketIndex == 1) {
             return new String[0];
         }
