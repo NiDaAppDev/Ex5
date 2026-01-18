@@ -1,0 +1,50 @@
+tomer.levi,nitzan.daloomy
+323961854,212071914
+
+one of the regex patterns we use in the code is called VARIABLE_DECLARATION_PATTERN
+"^\\s*(?:(final)\\s+)?(int|double|String|boolean|char\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b)|\\b(?:[a-zA-Z]\\w*|
+_[a-zA-Z0-9]\\w*)\\b))*)\\s*;\\s*$"
+the pattern validates the whole structure of a variable declaration
+to break it down:
+Group 1 captures whether the variable is final or not (captures final if it is, null if not)
+Group 2 captures the variable's type
+Group 3 captures the content of the variables' definitions - later to be validated
+^ - start of the string
+\s* - optional whitespace
+(final)\s+ - final keyword
+(int|double|String|boolean|char)\b - type of the variable
+\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b - name of the variable
+  This has two alternatives:
+[a-zA-Z]\w* - starts with a letter, followed by zero or more word characters (letters, digits, underscores)
+_[a-zA-Z0-9]\w* - starts with an underscore, followed by at least one alphanumeric character, then zero or more word characters
+\s*; - semicolon
+\s*$ - end of the string
+
+the second regex pattern we use is called METHOD_PATTERN
+"^\\s*void\\s+(\\b[a-zA-Z]\\w*\\b)\\s*\\(([^)]*)\\)\\s*\\{"
+the pattern validates the whole structure of a method declaration
+to break it down:
+Group 1 captures the method's return type (void)
+Group 2 captures the method's name
+Group 3 captures the method's parameters
+^ - start of the string
+\s*void\s+ - void keyword
+(\b[a-zA-Z]\w*\b) - name of the method
+\s*\(([^)]*)\) - opening parenthesis, followed by the method's parameters, followed by closing parenthesis
+\s*\{ - opening curly bracket}
+
+we have more patterns for if\while\comment lines.
+
+the structure of out code is as follows:
+Scope - this is the class responsible for holding all the variables and methods,
+it uses the LineReader class to classify the lines as comments, variables, methods, etc.
+then act accordingly, throw an exception or add the variable\method to the Scope, etc.
+LineReader - this class reads the file line by line and classifies it as a comment, variable, method, etc.
+Variable - this class represents a variable, it has a name, type, and value
+Method - this class represents a method, it has a name, parameters, and body and self validating methods.
+IfWhile - this class represents an if\while statement, it has a condition and a body and self validating methods.
+Utils - utils varies from class to class, some classes have more self validating methods in the utils.
+some have extract methods to get the variable\method name\type\body\condition to be used in other classes for validation.
+reg_ex_patterns - this class holds all the regex patterns we use in the code.
+Main - specifically SJava, this is the main class, it reads the file and calls the Scope class to validate it.
+the main (not the Sjava class) is also where we keep the type 2 exceptions.
