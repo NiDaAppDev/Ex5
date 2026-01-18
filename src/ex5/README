@@ -1,24 +1,62 @@
 tomer.levi,nitzan.daloomy
 323961854,212071914
 
-one of the regex patterns we use in the code is called VARIABLE_DECLARATION_PATTERN
-"^\\s*(?:(final)\\s+)?(int|double|String|boolean|char\\b(?:[a-zA-Z]\\w*|_[a-zA-Z0-9]\\w*)\\b)|\\b(?:[a-zA-Z]\\w*|
-_[a-zA-Z0-9]\\w*)\\b))*)\\s*;\\s*$"
-the pattern validates the whole structure of a variable declaration
-to break it down:
-Group 1 captures whether the variable is final or not (captures final if it is, null if not)
-Group 2 captures the variable's type
-Group 3 captures the content of the variables' definitions - later to be validated
-^ - start of the string
-\s* - optional whitespace
-(final)\s+ - final keyword
-(int|double|String|boolean|char)\b - type of the variable
-\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b - name of the variable
-  This has two alternatives:
-[a-zA-Z]\w* - starts with a letter, followed by zero or more word characters (letters, digits, underscores)
-_[a-zA-Z0-9]\w* - starts with an underscore, followed by at least one alphanumeric character, then zero or more word characters
-\s*; - semicolon
-\s*$ - end of the string
+one of the regex patterns we use in the code is called VARIABLE_DECLARATION_LINE, which is the following:
+
+"^\s*(?:(final)\s+)?(int|double|String|boolean|char)\s+((?:\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)
+\b\s*=\s*(?:"[^"]*"|'[^']'|true|false|[+\-]?(?:\d+\.?\d*|\.\d+)|[+\-]?\d+|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)
+\b)|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b)(?:\s*,\s*(?:\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b\s*=\s*
+(?:"[^"]*"|'[^']'|true|false|[+\-]?(?:\d+\.?\d*|\.\d+)|[+\-]?\d+|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b)
+|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b))*)\s*;\s*$"
+
+This pattern validates the whole structure of a variable declaration.
+To break it down:
+There are 3 capturing groups in this RegEx statement:
+    Group 1 captures whether the variable is final or not (captures final if it is, null if not)
+    Group 2 captures the variable's type
+    Group 3 captures the content of the variables' definitions - later to be validated
+And here are the parts constructing it:
+    SPACES_INITIAL:
+        RegEx statement:
+            ^\s*
+        Purpose:
+            Dealing with any spaces initial, which is defined as legal when referring to a
+            variables' declaration.
+
+    FINAL:
+        RegEx statement:
+            final
+        Purpose:
+            Referring to the optional keyword "final" existence.
+            If it's found (and captured), the declared variables are all initialized as final, and
+            must have an initial value.
+
+    SPACE_CHAR:
+        RegEx statement:
+            \s
+        Purpose:
+            Used anywhere we want to enable spaces, followed by + or * to specify the amount we're
+            "allowing".
+
+    VARIABLES_DECLARATION_CONTENT:
+        RegEx statement:
+            (?:\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b\s*=\s*(?:"[^"]*"|'[^']'|true|false|[+\-]?
+            (?:\d+\.?\d*|\.\d+)|[+\-]?\d+|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b)|\b
+            (?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b)(?:\s*,\s*(?:\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)
+            \b\s*=\s*(?:"[^"]*"|'[^']'|true|false|[+\-]?(?:\d+\.?\d*|\.\d+)|[+\-]?\d+|\b
+            (?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b)|\b(?:[a-zA-Z]\w*|_[a-zA-Z0-9]\w*)\b))*
+        Purpose:
+            Dealing with the content of the declaration, meaning anything that comes after
+            the optional final keyword and the type and before the line-ending semicolon
+            (i.e. "a, b=5, c").
+
+
+
+    ENDING_SEMICOLON:
+        RegEx statement:
+            \\s*;\\s*$
+        Purpose:
+            Making sure the line ends with a semicolon, padded with optional spaces.
 
 the second regex pattern we use is called METHOD_PATTERN
 "^\\s*void\\s+(\\b[a-zA-Z]\\w*\\b)\\s*\\(([^)]*)\\)\\s*\\{"
