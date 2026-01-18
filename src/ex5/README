@@ -66,49 +66,69 @@ Group 1 captures the method's return type (void)
 Group 2 captures the method's name
 Group 3 captures the method's parameters
 And here are the parts constructing it:
-SPACES_INITIAL:
-    RegEx statement:
-        ^\s*
-    Purpose:
-        Dealing with any spaces initial, which is defined as legal when referring to a method's
-        declaration.
+    SPACES_INITIAL:
+        RegEx statement:
+            ^\s*
+        Purpose:
+            Dealing with any spaces initial, which is defined as legal when referring to a method's
+            declaration.
 
-"void"
-    the method's return type which must always be void.
-    This is followed by at least one space SPACE_CHAR as specified above.
+    "void":
+        the method's return type which must always be void.
+        This is followed by at least one space SPACE_CHAR as specified above.
 
-METHOD_NAME:
-    RegEx statement:
-        (\\b[a-zA-Z]\\w*\\b)
-    Purpose:
-        finding the method name. followed by at least one space SPACE_CHAR as specified above.
+    METHOD_NAME:
+        RegEx statement:
+            (\\b[a-zA-Z]\\w*\\b)
+        Purpose:
+            finding the method name. followed by at least one space SPACE_CHAR as specified above.
 
-the RegEx expression "([^)(]*)\\)" :
-    gets all the parameters of the method, separated by commas.
-    the parameters are captured in Group 3.
+    The RegEx expression "([^)(]*)\\)" :
+        gets all the parameters of the method, separated by commas.
+        the parameters are captured in Group 3.
 
-followed by the RegEx expression "\\{" :
-    defines the beginning of the method body. this must follow the method declaration and the parameters.
+    Followed by the RegEx expression "\\{" :
+        defines the beginning of the method body. this must follow the method declaration and the parameters.
 
-we have more patterns for if\while\comment lines.
+We have more patterns for if\while\comment lines.
 
-the structure of out code is as follows:
-Scope - this is the class responsible for holding all the variables and methods,
-it uses the LineReader class to classify the lines as comments, variables, methods, etc.
-then act accordingly, throw an exception or add the variable\method to the Scope, etc.
-LineReader - this class reads the file line by line and classifies it as a comment, variable, method, etc.
-Variable - this class represents a variable, it has a name, type, and value
-Method - this class represents a method, it has a name, parameters, and body and self validating methods.
-IfWhile - this class represents an if\while statement, it has a condition and a body and self validating methods.
-Utils - all of the utils are in the form of a static class, meaning all the methods are static and can be called from anywhere.
-this is because instantiating a class like this is meaningless,
-as we only use the methods on information from different classes, and we never require more than one of each util.
-the utils vary from class to class, some classes have more self validating methods in the utils.
-some have extract methods to get the variable\method name\type\body\condition to be used in other classes for validation.
-but we only ever use the methods.
-reg_ex_patterns - this holds all the regex patterns we use in the code.
-they are all public to be used in the code, as they are static, and we never change them.
-instead of defining the same pattern in different places, we reuse the same constant patterns.
-Main - specifically SJava, this is the main class, it reads the file and calls the Scope class to validate it.
-the main (not the Sjava class) is also where we keep the type 2 exceptions.
-the IllegalException is thrown throughout the entire code, so it is not kept in a single module or class.
+The structure of out code is as follows:
+    Scope:
+        An object that represent a scope of a code block.
+        This is the class responsible for holding all the variables and methods,
+        It uses the LineReader class to classify the lines as comments, variables, methods, etc.
+        Then act accordingly, throw an exception or add the variable\method to the Scope, etc.
+    LineReader:
+        This class reads the file line by line and classifies it as a comment, variable, method, etc.
+    Variable:
+        This class represents a variable - it has fields that indicate whether the variable is final and
+        initialized, and its type.
+    Method:
+        This class represents a method, it has a name, parameters, and body and self validating methods.
+    IfWhile:
+        This class represents an if\while statement, it has a condition verifying method,and a body (inner
+        scope).
+    utils package:
+        All of the utils are in the form of a static class, meaning all the methods are static and can be
+        called from anywhere.
+        This is because instantiating a class like this is meaningless, as we only use the methods on
+        information from different classes, and we never require more than one of each util.
+        We could've used the Singleton design pattern with them, but that would be pointless, as all their
+        methods are static and do not require an initialization of a util object.
+        The utils vary from class to class, some classes have more self validating methods in the utils.
+        Some have extract methods to get the variable\method name\type\body\condition to be used in other
+        classes for validation.
+    reg_ex_patterns package:
+        This package holds all the regex constants and patterns we use in the code.
+        They are all public to be used in the code, as they are final and static.
+        Instead of defining the same pattern in different places, we reuse the same constant patterns.
+        As we did for the utils, these are all static classes - They're built of static constants,
+        and there'll be no use for an object of them - they just hold static final information to
+        be used throughout the project.
+    main package:
+        Specifically SJava, is the main class, it reads the file from the program's inputted arguments and
+        creates Scope object (which practically is the global scope) to delegate the code's validation to.
+        The main (not the Sjava class) is also where we keep the type 2 exceptions (IOExceptions).
+        The IllegalException is thrown throughout the entire code, so it is not kept in a single module or
+        class, despite it being requested in the instructions - there was no way to implement it, and we've
+        found no reason in making multiple different exceptions for it, since they all share the same idea.
