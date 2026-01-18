@@ -65,11 +65,30 @@ to break it down:
 Group 1 captures the method's return type (void)
 Group 2 captures the method's name
 Group 3 captures the method's parameters
-^ - start of the string
-\s*void\s+ - void keyword
-(\b[a-zA-Z]\w*\b) - name of the method
-\s*\(([^)]*)\) - opening parenthesis, followed by the method's parameters, followed by closing parenthesis
-\s*\{ - opening curly bracket}
+And here are the parts constructing it:
+SPACES_INITIAL:
+    RegEx statement:
+        ^\s*
+    Purpose:
+        Dealing with any spaces initial, which is defined as legal when referring to a method's
+        declaration.
+
+"void"
+    the method's return type which must always be void.
+    This is followed by at least one space SPACE_CHAR as specified above.
+
+METHOD_NAME:
+    RegEx statement:
+        (\\b[a-zA-Z]\\w*\\b)
+    Purpose:
+        finding the method name. followed by at least one space SPACE_CHAR as specified above.
+
+the RegEx expression "([^)(]*)\\)" :
+    gets all the parameters of the method, separated by commas.
+    the parameters are captured in Group 3.
+
+followed by the RegEx expression "\\{" :
+    defines the beginning of the method body. this must follow the method declaration and the parameters.
 
 we have more patterns for if\while\comment lines.
 
